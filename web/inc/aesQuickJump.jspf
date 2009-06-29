@@ -1,0 +1,74 @@
+<table width="900" cellpadding="3" cellspacing="0" align="center"
+	border="0" bordercolor="#302C38">
+	<tbody>
+		<tr bgcolor="#302C38">
+			<td align="left" >
+				<font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"
+					size="2"> <b> <script language="javascript"
+							type="text/javascript">
+			<!--
+				day = new Date()
+				hr = day.getHours()
+				if  ((hr == 23) || (hr == 0) || (hr == 1) || (hr == 2) || (hr == 3) || (hr == 4) || (hr == 5) || (hr == 6))
+					document.write("Good Night!&nbsp;this is&nbsp;")
+				if ((hr == 7) || (hr == 8) || (hr == 9) || (hr == 10) || (hr == 11))
+					document.write("Good Morning!&nbsp;this is&nbsp;")
+				if ((hr == 12) || (hr == 13) || (hr == 14) || (hr == 15) || (hr == 16))
+					document.write("Good Afternoon!&nbsp;this is&nbsp;")
+				if ((hr == 17) || (hr == 18) || (hr == 19) || (hr == 20) || (hr == 21) || (hr == 22))
+					document.write("Good Evening!&nbsp;this is&nbsp;")
+				var months=new Array(13);
+				months[1]="January";
+				months[2]="February";
+				months[3]="March";
+				months[4]="April";
+				months[5]="May";
+				months[6]="June";
+				months[7]="July";
+				months[8]="August";
+				months[9]="September";
+				months[10]="October";
+				months[11]="November";
+				months[12]="December";
+				var days=new Array(8);
+				days[1]="Sunday";
+				days[2]="Monday";
+				days[3]="Tuesday";
+				days[4]="Wednesday";
+				days[5]="Thursday";
+				days[6]="Friday";
+				days[7]="Saturday";
+				var time=new Date();
+				var month2=months[time.getMonth() + 1];
+				var date=time.getDate();
+				var year=time.getYear();
+				var day2=days[time.getDay() + 1];
+				if (navigator.appName == "Netscape")
+					year=1900 + year;
+				if (navigator.userAgent.indexOf("Opera") >= 0)
+					year = 1900 + year;
+			// You can make your own special days by just keeping to the same format below
+			if ((date == 24) && (month2 == "December"))
+				day2="Christmas eve";
+			if ((date == 25) && (month2 == "December"))
+				day2="Christmas day";
+			if ((date == 31) && (month2 == "December"))
+				day2="New years eve";
+			if ((date == 14) && (month2 == "February"))
+				day2="Valentine's day";
+			document.write(day2 + ", " + month2 + " ");
+			document.write(date + ", " + year);
+			if ((date == 29) && (month2 == "February"))
+				document.write("&nbsp;&nbsp;Leap-year");
+			// -->
+			</script> </b> </font>
+			</td>
+			<td align="right" valign="middle">
+				<a href="admin/index.jsp"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"size="2">Home</font></a>				
+				<a href="client/index.jsp"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"size="2">Client</font></a>
+				<a href="/blog" target="blog"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"size="2">Blog</font></a>
+				<a href="logout.jsp"><font face="Verdana, Arial, Helvetica, sans-serif" color="#FFFFFF"size="2">Logout</font></a>				
+			</td>
+		</tr>
+	</tbody>
+</table>

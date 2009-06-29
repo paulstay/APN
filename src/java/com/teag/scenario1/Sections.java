@@ -1,0 +1,5 @@
+package com.teag.scenario1;
+
+public enum Sections {
+	CHASH_RECEIPTS, CASH_DISBURSEMENTS, PORTFOLIO, NETWORTH, ESTATE_DISTRIBUTION;
+}

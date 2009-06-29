@@ -1,0 +1,13 @@
+		<table width="100%" border="0" cellspacing="0" cellpadding="2"
+			bgcolor="#FFFFCC">
+			<tr>
+				<td align='center'>${validUser.firstName} ${validUser.lastName}</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<p>
+						<font size="-1">Copyright &copy; 2008-2009 Advanced Practice Network</font>
+					</p>
+				</td>
+			</tr>
+		</table>

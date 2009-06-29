@@ -1,0 +1,1642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <servlet>
+    <servlet-name>PDFTest</servlet-name>
+    <servlet-class>com.teag.servlet.PDFTest</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PDFReport</servlet-name>
+    <servlet-class>com.teag.servlet.PDFReport</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FullReport</servlet-name>
+    <servlet-class>com.teag.servlet.FullReport</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BaselineReport</servlet-name>
+    <servlet-class>com.teag.servlet.BaselineReport</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Toolbox Servlet</description>
+    <display-name>Toolbox Servlet</display-name>
+    <servlet-name>ToolboxServlet</servlet-name>
+    <servlet-class>com.estate.servlet.ToolboxServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Call and generate PDF reports</description>
+    <display-name>AES REPORTS</display-name>
+    <servlet-name>AesReportServlet</servlet-name>
+    <servlet-class>com.aes.servlet.AesReportServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This will check and handle the CRT form for the standalone toolbox</description>
+    <display-name>CRT Controller</display-name>
+    <servlet-name>CrtToolboxServlet</servlet-name>
+    <servlet-class>com.estate.servlet.CrtToolboxServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This will check and handle the FLP form for the standalone toolbox</description>
+    <display-name>FLP Controller</display-name>
+    <servlet-name>FlpToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.flp.FlpToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Process FLP Assets</description>
+    <display-name>FLP Assets</display-name>
+    <servlet-name>FlpServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.flp.FlpServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Send the request to the appropriate jsp</description>
+    <display-name>Menu Tool Dispatch</display-name>
+    <servlet-name>ToolMenuDispatchServlet</servlet-name>
+    <servlet-class>com.estate.tools.ToolMenuDispatchServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Process FLP Assets and generate FLP Asset Data</description>
+    <display-name>FLPAssets</display-name>
+    <servlet-name>FlpAssetFormServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.flp.FlpAssetFormServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Process FLP Cancel and Save</description>
+    <display-name>FLPAssets Process</display-name>
+    <servlet-name>FlpProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.flp.FlpProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Create LLC process </description>
+    <display-name>LLC Servlet</display-name>
+    <servlet-name>LlcServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.llc.LlcServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>Process LLC Assets and Generate LLC asset data</description>
+  	<display-name>LLCAssets</display-name>
+  	<servlet-name>LlcAssetFormServlet</servlet-name>
+  	<servlet-class>com.estate.servlet.tools.llc.LlcAssetFormServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>Process LLC cancel and save</description>
+  	<display-name>LLCProcess</display-name>
+  	<servlet-name>LlcProcessServlet</servlet-name>
+  	<servlet-class>com.estate.servlet.tools.llc.LlcProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>Process LLC Tool Data</description>
+  	<display-name>LLCTool</display-name>
+  	<servlet-name>LlcToolServlet</servlet-name>
+  	<servlet-class>com.estate.servlet.tools.llc.LlcToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Process GRAT Tool</description>
+    <display-name>GratServlet</display-name>
+    <servlet-name>GratServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.grat.GratServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Process GRAT Assets</description>
+    <display-name>GratServletAssets</display-name>
+    <servlet-name>GratAssetsFormServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.grat.GratAssetsFormServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Process GRAT Tool</description>
+    <display-name>GratToolServlet</display-name>
+    <servlet-name>GratToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.grat.GratToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Process and Finalize Grat</description>
+    <display-name>GratProcessServlet</display-name>
+    <servlet-name>GratProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.grat.GratProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Grat Insurance</description>
+    <display-name>GratInsuranceServlet</display-name>
+    <servlet-name>GratInsuranceServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.grat.GratInsuranceServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Grat Summary</description>
+    <display-name>Grat Summary Servlet</display-name>
+    <servlet-name>GratSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.grat.GratSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>CLAT init</description>
+    <display-name>CLAT Servlet</display-name>
+    <servlet-name>ClatServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.clat.ClatServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>CLAT Tool</description>
+    <display-name>CLAT Tool Servlet</display-name>
+    <servlet-name>ClatToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.clat.ClatToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>CLAT Assets</description>
+    <display-name>CLAT Asset Servlet</display-name>
+    <servlet-name>ClatAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.clat.ClatAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>CLAT Summary</description>
+    <display-name>CLAT Summary Servlet</display-name>
+    <servlet-name>ClatSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.clat.ClatSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>CLAT Processes</description>
+    <display-name>CLAT Process Servlet</display-name>
+    <servlet-name>ClatProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.clat.ClatProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>CRT Dispatch Servlet</description>
+    <display-name>CRT Servlet</display-name>
+    <servlet-name>CrtServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.crt.CrtServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>CRT Tool Servlet</description>
+    <display-name>CRT Tool Servlet</display-name>
+    <servlet-name>CrtToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.crt.CrtToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>CRT Assets Servlet</description>
+    <display-name>CRT Assets</display-name>
+    <servlet-name>CrtAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.crt.CrtAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>CRT Process Servlet</description>
+    <display-name>CRT Process</display-name>
+    <servlet-name>CrtProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.crt.CrtProcessServlet</servlet-class>
+  </servlet>
+  <servlet> 
+    <description>CRT Process Servlet</description>
+    <display-name>CRT Process</display-name>
+    <servlet-name>CrtSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.crt.CrtSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>QPRT Process Servlet</description>
+    <display-name>QPRT Process</display-name>
+    <servlet-name>QprtServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.qprt.QprtServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>QPRT Tool Servlet</description>
+    <display-name>QPRT Tool Process</display-name>
+    <servlet-name>QprtToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.qprt.QprtToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>QPRT Asset Servlet</description>
+    <display-name>QPRT Asset Process</display-name>
+    <servlet-name>QprtAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.qprt.QprtAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>QPRT Summary Servlet</description>
+    <display-name>QPRT Summary Process</display-name>
+    <servlet-name>QprtSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.qprt.QprtSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>QPRT Final Process Servlet</description>
+    <display-name>QPRT Final Process</display-name>
+    <servlet-name>QprtProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.qprt.QprtProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>MGEN Tool Setup</description>
+    <display-name>Mgen Tool Process</display-name>
+    <servlet-name>MgenServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.mgen.MgenServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>MGEN Asset Setup</description>
+    <display-name>Mgen Asset  Process</display-name>
+    <servlet-name>MgenAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.mgen.MgenAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Mgen Tool Process</description>
+    <display-name>Mgen Tool Form</display-name>
+    <servlet-name>MgenToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.mgen.MgenToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Mgen Summary  Process</description>
+    <display-name>Mgen Summary Form</display-name>
+    <servlet-name>MgenSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.mgen.MgenSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Mgen  Process</description>
+    <display-name>Mgen Process Form</display-name>
+    <servlet-name>MgenProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.mgen.MgenProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>RPM</description>
+    <display-name>RPM Servlet</display-name>
+    <servlet-name>RpmServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.rpm.RpmServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>RPM Assets</description>
+    <display-name>RPM Asset Servlet</display-name>
+    <servlet-name>RpmAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.rpm.RpmAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>RPM Process</description>
+    <display-name>RPM Process Servlet</display-name>
+    <servlet-name>RpmProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.rpm.RpmProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>RPM Tool</description>
+    <display-name>RPM Tool Servlet</display-name>
+    <servlet-name>RpmToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.rpm.RpmToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>RPM Summary</description>
+    <display-name>RPM Summary Servlet</display-name>
+    <servlet-name>RpmSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.rpm.RpmSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>IDIT Servlet</description>
+    <display-name>IDIT Servlet</display-name>
+    <servlet-name>IditServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.idit.IditServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>IDIT Assets</description>
+    <display-name>IDIT Assets Servlet</display-name>
+    <servlet-name>IditAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.idit.IditAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>IDIT Tool Form</description>
+    <display-name>IDIT Form Servlet</display-name>
+    <servlet-name>IditToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.idit.IditToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>IDIT Summary</description>
+    <display-name>IDIT Summary Servlet</display-name>
+    <servlet-name>IditSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.idit.IditSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>IDIT Process</description>
+    <display-name>IDIT Process Servlet</display-name>
+    <servlet-name>IditProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.idit.IditProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Scin Servlet</description>
+    <display-name>SCIN Servlet</display-name>
+    <servlet-name>ScinServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.scin.ScinServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Scin Tool Servlet</description>
+    <display-name>SCIN Tool Servlet</display-name>
+    <servlet-name>ScinToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.scin.ScinToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Scin Asset Servlet</description>
+    <display-name>SCIN Asset Servlet</display-name>
+    <servlet-name>ScinAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.scin.ScinAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Scin Summary Servlet</description>
+    <display-name>SCIN Summary Servlet</display-name>
+    <servlet-name>ScinSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.scin.ScinSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Scin Process Servlet</description>
+    <display-name>SCIN Process Servlet</display-name>
+    <servlet-name>ScinProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.scin.ScinProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Private Annuity Tool Servlet </description>
+    <display-name>Private Annuity Tool Servlet</display-name>
+    <servlet-name>PatServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.pat.PatServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Private Annuity Tool Form</description>
+    <display-name>Private Annuity Tool Form</display-name>
+    <servlet-name>PatToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.pat.PatToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Private Annuity Asset Form</description>
+    <display-name>Private Annuity Assets</display-name>
+    <servlet-name>PatAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.pat.PatAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Private Annuity Summary</description>
+    <display-name>Private Annuity Summary</display-name>
+    <servlet-name>PatSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.pat.PatSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Private Annuity Process</description>
+    <display-name>Private Annuity Process</display-name>
+    <servlet-name>PatProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.pat.PatProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Lap Plan Servlet</description>
+    <display-name>Lap Plan Servlet</display-name>
+    <servlet-name>LapServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.lap.LapServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Lap Plan Tool Servlet</description>
+    <display-name>Lap Plan Tool Servlet</display-name>
+    <servlet-name>LapToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.lap.LapToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Lap Plan Asset  Servlet</description>
+    <display-name>Lap Plan Asset Servlet</display-name>
+    <servlet-name>LapAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.lap.LapAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Lap Plan Summary  Servlet</description>
+    <display-name>Lap Plan Summary Servlet</display-name>
+    <servlet-name>LapSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.lap.LapSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Lap Plan Process  Servlet</description>
+    <display-name>Lap Plan Process Servlet</display-name>
+    <servlet-name>LapProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.lap.LapProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>FCF Servlet</description>
+    <display-name>FCF Servlet</display-name>
+    <servlet-name>FcfServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.fcf.FcfServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>FCF Tool Form</description>
+    <display-name>FCF Tool Form</display-name>
+    <servlet-name>FcfToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.fcf.FcfToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>FCF Summary</description>
+    <display-name>FCF  Summary</display-name>
+    <servlet-name>FcfSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.fcf.FcfSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>FCF Process</description>
+    <display-name>FCF  Process</display-name>
+    <servlet-name>FcfProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.fcf.FcfProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Crummey Trust Servlet</description>
+    <display-name>Crummey Trust Servlet</display-name>
+    <servlet-name>CrumServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.crum.CrumServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Crummey Trust Tool Servlet</description>
+    <display-name>Crummey Trust Tool Servlet</display-name>
+    <servlet-name>CrumToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.crum.CrumToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Crummey Trust Summary Servlet</description>
+    <display-name>Crummey Trust Summary Servlet</display-name>
+    <servlet-name>CrumSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.crum.CrumSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Crummey Trust Process Servlet</description>
+    <display-name>Crummey Trust Process Servlet</display-name>
+    <servlet-name>CrumProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.crum.CrumProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TClat Servlet</description>
+    <display-name>TClat Servlet</display-name>
+    <servlet-name>TClatServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.tclat.TClatServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TClat Tool Servlet</description>
+    <display-name>TClat Tool Servlet</display-name>
+    <servlet-name>TClatToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.tclat.TClatToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TClat Summary Servlet</description>
+    <display-name>TClat Summary Servlet</display-name>
+    <servlet-name>TClatSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.tclat.TClatSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TClat Process Servlet</description>
+    <display-name>TClat Process Servlet</display-name>
+    <servlet-name>TClatProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.tclat.TClatProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Planning Tools</description>
+    <display-name>Planning Tools</display-name>
+    <servlet-name>PlanningToolsServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.PlanningToolsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Scenario Setup Servlet</description>
+    <display-name>Scenario Setup Servlet</display-name>
+    <servlet-name>PlanningScenarioServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.PlanningScenarioServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Tool Wizard Servlet</description>
+    <display-name>Tool Wizard Servlet</display-name>
+    <servlet-name>ToolWizardServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.ToolWizardServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Tool Selection Servlet</description>
+    <display-name>Tool Selection Servlet</display-name>
+    <servlet-name>ToolSelectServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.ToolSelectServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Initialize variables for the Report</description>
+    <display-name>Cash Flow Setup Servlet</display-name>
+    <servlet-name>CashFlowInitServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.CashFlowInitServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>AB Trust Setup Servlet</description>
+    <display-name>AB Trust Servlet</display-name>
+    <servlet-name>ABTrustServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.ABTrustServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone CRT Tool</description>
+    <display-name>Standalone CRT Tool</display-name>
+    <servlet-name>StdCrtServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.crt.StdCrtServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone Grat Tool</description>
+    <display-name>Standalone Grat Tool</display-name>
+    <servlet-name>StdGratServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.grat.StdGratServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone CGA Tool</description>
+    <display-name>Standalone CGA Tool</display-name>
+    <servlet-name>StdCgaServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.cga.StdCgaServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone IDIT Tool</description>
+    <display-name>Standalone IDIT Tool</display-name>
+    <servlet-name>StdIditServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.idit.StdIditServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone SCIN Tool</description>
+    <display-name>Standalone SCIN Tool</display-name>
+    <servlet-name>StdScinServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.scin.StdScinServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone RPM Tool</description>
+    <display-name>Standalone RPM Tool</display-name>
+    <servlet-name>StdRpmServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.rpm.StdRpmServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone Qprt Tool</description>
+    <display-name>Standalone Qprt Tool</display-name>
+    <servlet-name>StdQprtServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.qprt.StdQprtServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Control Real Estate Asset</description>
+    <display-name>Asset Real Estate</display-name>
+    <servlet-name>RealEstateAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.RealEstateAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Cash Assets Servlet</description>
+    <display-name>Asset Cash and Equivalent</display-name>
+    <servlet-name>CashAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.CashAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Bond Assets Servlet</description>
+    <display-name>Asset Bonds</display-name>
+    <servlet-name>BondAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.BondAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Business Assets Servlet</description>
+    <display-name>Asset Business</display-name>
+    <servlet-name>BusinessAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.BusinessAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Illiquied Asset Servlet</description>
+    <display-name>Illiquid Asset</display-name>
+    <servlet-name>IlliquidAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.IlliquidAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Debt Asset Servlet</description>
+    <display-name>Debt Asset</display-name>
+    <servlet-name>DebtAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.DebtAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Life Insurance Asset Servlet</description>
+    <display-name>Life Insurance</display-name>
+    <servlet-name>LifeInsAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.LifeInsAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Notes Receivable</description>
+    <display-name>Notes Receivable</display-name>
+    <servlet-name>NotesRecAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.NotesRecAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Notes Payable</description>
+    <display-name>Notes Payable</display-name>
+    <servlet-name>NotesPayAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.NotesPayAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Personal Property Servlet</description>
+    <display-name>Personal Property</display-name>
+    <servlet-name>PersonalAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.PersonalAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Retirement Asset Servlet</description>
+    <display-name>Retirement Asset</display-name>
+    <servlet-name>RetirementAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.RetirementAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Securities Asset Servlet</description>
+    <display-name>Securities Asset</display-name>
+    <servlet-name>SecuritiesAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.SecuritiesAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Idit Grat Combo Tool</description>
+    <display-name>Idit Grat Combo Tool</display-name>
+    <servlet-name>IditGratToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.IditGrat.IditGratToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Idit Grat Combo Servlet</description>
+    <display-name>Idit Grat Combo Servlet</display-name>
+    <servlet-name>IditGratServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.IditGrat.IditGratServlet</servlet-class>
+  </servlet>
+    <servlet>
+    <description>Idit Grat Summary</description>
+    <display-name>Idit Grat Summary</display-name>
+    <servlet-name>IditGratSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.IditGrat.IditGratSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Idit Grat Insurance Servlet</description>
+    <display-name>Idit Grat Insurance Page</display-name>
+    <servlet-name>IditGratInsuranceServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.IditGrat.IditGratInsuranceServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Idit Grat Insurance Servlet</description>
+    <display-name>Idit Grat Insurance Page</display-name>
+    <servlet-name>IditGratProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.IditGrat.IditGratProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Idit Grat Asset Servlet</description>
+    <display-name>Idit Grat Asset Page</display-name>
+    <servlet-name>IditGratAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.IditGrat.IditGratAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Client Assets</description>
+    <display-name>Client Assets</display-name>
+    <servlet-name>ClientAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.assets.ClientAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Client Assets</description>
+    <display-name>Objectives</display-name>
+    <servlet-name>ClientObjectivesServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.estate.ClientObjectivesServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Client Observations</description>
+    <display-name>Client Observations</display-name>
+    <servlet-name>ClientObservationsServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.estate.ClientObservationsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Client Philosophy</description>
+    <display-name>Client Philosophy</display-name>
+    <servlet-name>ClientPhilosophyServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.estate.ClientPhilosophyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Client recommendations</description>
+    <display-name>Client Recommendations</display-name>
+    <servlet-name>ClientRecommendationsServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.estate.ClientRecommendationsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Generate Client Reports</description>
+    <display-name>Generate Client Reports</display-name>
+    <servlet-name>ClientReportServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.estate.ClientReportServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Generate Client Documenation</description>
+    <display-name>Generate Client Documentation</display-name>
+    <servlet-name>ClientDocServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.estate.ClientDocServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Admin Planner Servlet</description>
+    <display-name>Admin Planner Servlet</display-name>
+    <servlet-name>PlannerDispatch</servlet-name>
+    <servlet-class>com.estate.admin.PlannerDispatch</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Admin Planner List Servlet</description>
+    <display-name>Admin Planner List Servlet</display-name>
+    <servlet-name>PlannerList</servlet-name>
+    <servlet-class>com.estate.admin.PlannerList</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Admin Planner Form Servlet</description>
+    <display-name>Admin Planner Form Servlet</display-name>
+    <servlet-name>PlannerForm</servlet-name>
+    <servlet-class>com.estate.admin.PlannerForm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Admin Planner Login Servlet</description>
+    <display-name>Admin Planner Login Servlet</display-name>
+    <servlet-name>PlannerLogin</servlet-name>
+    <servlet-class>com.estate.admin.PlannerLogin</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Life Insurance</description>
+    <display-name>Life Insurance</display-name>
+    <servlet-name>LifeServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.life.LifeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Life Insurance Assets</description>
+    <display-name>Life Insurance Assets</display-name>
+    <servlet-name>LifeAssetServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.life.LifeAssetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Life Insurance Tool</description>
+    <display-name>Life Insurance Tool</display-name>
+    <servlet-name>LifeToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.life.LifeToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Life Insurance Tool Summary</description>
+    <display-name>Life Insurance Tool Summary</display-name>
+    <servlet-name>LifeSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.life.LifeSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Life Insurance Tool Finalize</description>
+    <display-name>Life Insurance Tool Finalize</display-name>
+    <servlet-name>LifeProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.life.LifeProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Variable Cash Receipts</description>
+    <display-name>Variable Cash Receipts</display-name>
+    <servlet-name>VcfCashReceiptsServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.VcfCashReceiptsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>VCF Item Index</description>
+    <display-name>Index for Items</display-name>
+    <servlet-name>VCFItemServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.VCFItemServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>VCF CD Item Index</description>
+    <display-name>Index CD for Items</display-name>
+    <servlet-name>VcfCashDisbursementServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.VcfCashDisbursementServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>VCF Net Worth</description>
+    <display-name>VCF Index Net Worth</display-name>
+    <servlet-name>VcfNetWorthServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.VcfNetWorthServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>VCF Estate Dist</description>
+    <display-name>VCF Estate Dist</display-name>
+    <servlet-name>VcfEstateDistServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.VcfEstateDistServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>VCF Family</description>
+    <display-name>VCF Family</display-name>
+    <servlet-name>VcfFamilyServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.VcfFamilyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>VCF Charity</description>
+    <display-name>VCF Charity</display-name>
+    <servlet-name>VcfCharityServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.VcfCharityServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Setup Index</description>
+    <display-name>Setup index</display-name>
+    <servlet-name>SetupIndexServlet</servlet-name>
+    <servlet-class>com.estate.servlet.client.setup.SetupIndexServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Heirs Information</description>
+    <display-name>Heirs Information</display-name>
+    <servlet-name>HeirServlet</servlet-name>
+    <servlet-class>com.estate.servlet.personal.HeirServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Advisors Information for Report</description>
+    <display-name>Advisors Information for Report</display-name>
+    <servlet-name>AdvisorServlet</servlet-name>
+    <servlet-class>com.estate.servlet.personal.AdvisorServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Residence and Business Information</description>
+    <display-name>Residence  and Business Information</display-name>
+    <servlet-name>ResidenceServlet</servlet-name>
+    <servlet-class>com.estate.servlet.personal.ResidenceServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Spouse Data</description>
+    <display-name>Spouse Data</display-name>
+    <servlet-name>SpouseServlet</servlet-name>
+    <servlet-class>com.estate.servlet.personal.SpouseServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Children Data</description>
+    <display-name>Children Data</display-name>
+    <servlet-name>ChildrenGenServlet</servlet-name>
+    <servlet-class>com.estate.servlet.personal.ChildrenGenServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Children Edit</description>
+    <display-name>Children Edit Servlet</display-name>
+    <servlet-name>ChildProcessServlet</servlet-name>
+    <servlet-class>com.estate.servlet.personal.ChildProcessServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Children Spouse  Edit</description>
+    <display-name>Children Spouse Edit Servlet</display-name>
+    <servlet-name>ChildSpouseServlet</servlet-name>
+    <servlet-class>com.estate.servlet.personal.ChildSpouseServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Process the Client form for a new client</description>
+    <display-name>New Client Form</display-name>
+    <servlet-name>NewClientFormServlet</servlet-name>
+    <servlet-class>com.estate.servlet.admin.NewClientFormServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Adminsitrative Client redirection</description>
+    <display-name>Administrative Client Actions</display-name>
+    <servlet-name>AdminClientServlet</servlet-name>
+    <servlet-class>com.estate.servlet.admin.AdminClientServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Administrative Select Client</description>
+    <display-name>Select Clients</display-name>
+    <servlet-name>AdminSelectClientServlet</servlet-name>
+    <servlet-class>com.estate.servlet.admin.AdminSelectClientServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Initialize the client</description>
+    <display-name>Initialize the client</display-name>
+    <servlet-name>AdminInitClient</servlet-name>
+    <servlet-class>com.estate.servlet.admin.AdminInitClient</servlet-class>
+  </servlet>
+  <servlet>
+    <description>View or Edit the client Information</description>
+    <display-name>View or Edit the Client Information</display-name>
+    <servlet-name>AdminClientViewServlet</servlet-name>
+    <servlet-class>com.estate.servlet.admin.AdminClientViewServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Process Edit the client Information</description>
+    <display-name>Process Edit  Client Information</display-name>
+    <servlet-name>AdminClientFormServlet</servlet-name>
+    <servlet-class>com.estate.servlet.admin.AdminClientFormServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Follow Links</description>
+    <display-name>Follow Links</display-name>
+    <servlet-name>LinkServlet</servlet-name>
+    <servlet-class>com.estate.servlet.LinkServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Initial Gift for IDIT</description>
+    <display-name>Initial Gift for IDIT</display-name>
+    <servlet-name>IditGiftServlet</servlet-name>
+    <servlet-class>com.estate.servlet.tools.idit.IditGiftServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Display the IRS Rates in a Table</description>
+    <display-name>IRS 7520 rates</display-name>
+    <servlet-name>IrsRatesServlet</servlet-name>
+    <servlet-class>com.estate.servlet.IrsRatesServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone Clat Init Servlet</description>
+    <display-name>Standalone Clat Init Servlet</display-name>
+    <servlet-name>StdClatInitServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.clat.StdClatInitServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone Clat user Servlet</description>
+    <display-name>Standalone Clat user Servlet</display-name>
+    <servlet-name>StdClatUserServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.clat.StdClatUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone Clat Tool Servlet</description>
+    <display-name>Standalone Clat Tool Servlet</display-name>
+    <servlet-name>StdClatToolServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.clat.StdClatToolServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Standalone Clat Summary Servlet</description>
+    <display-name>Standalone Clat Summary Servlet</display-name>
+    <servlet-name>StdClatSummaryServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.clat.StdClatSummaryServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Calculate the Term and Life Factors</description>
+    <display-name>Generate and Display Term and Life Factors</display-name>
+    <servlet-name>FactorsServlet</servlet-name>
+    <servlet-class>com.estate.servlet.FactorsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>Clean up session</description>
+    <display-name>Std Clat Servlet</display-name>
+    <servlet-name>StdClatServlet</servlet-name>
+    <servlet-class>com.estate.servlet.std.clat.StdClatServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <servlet>
+        <servlet-name>StdEstatePlanningServlet</servlet-name>
+        <servlet-class>com.estate.servlet.std.planning.StdEstatePlanningServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>PDFTest</servlet-name>
+    <url-pattern>/servlet/PDFTest</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PDFReport</servlet-name>
+    <url-pattern>/servlet/PDFReport</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FullReport</servlet-name>
+    <url-pattern>/servlet/FullReport</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BaselineReport</servlet-name>
+    <url-pattern>/servlet/BaselineReport</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ToolboxServlet</servlet-name>
+    <url-pattern>/servlet/ToolboxServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AesReportServlet</servlet-name>
+    <url-pattern>/servlet/AesReportServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrtToolboxServlet</servlet-name>
+    <url-pattern>/servlet/CrtToolboxServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FlpServlet</servlet-name>
+    <url-pattern>/servlet/FlpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ToolMenuDispatchServlet</servlet-name>
+    <url-pattern>/servlet/ToolMenuDispatchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FlpAssetFormServlet</servlet-name>
+    <url-pattern>/servlet/FlpAssetFormServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FlpToolServlet</servlet-name>
+    <url-pattern>/servlet/FlpToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FlpProcessServlet</servlet-name>
+    <url-pattern>/servlet/FlpProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LlcServlet</servlet-name>
+    <url-pattern>/servlet/LlcServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LlcToolServlet</servlet-name>
+  	<url-pattern>/servlet/LlcToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LlcAssetFormServlet</servlet-name>
+  	<url-pattern>/servlet/LlcAssetFormServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LlcProcessServlet</servlet-name>
+  	<url-pattern>/servlet/LlcProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GratServlet</servlet-name>
+    <url-pattern>/servlet/GratServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GratAssetsFormServlet</servlet-name>
+    <url-pattern>/servlet/GratAssetsFormServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GratToolServlet</servlet-name>
+    <url-pattern>/servlet/GratToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GratProcessServlet</servlet-name>
+    <url-pattern>/servlet/GratProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GratInsuranceServlet</servlet-name>
+    <url-pattern>/servlet/GratInsuranceServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GratSummaryServlet</servlet-name>
+    <url-pattern>/servlet/GratSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClatServlet</servlet-name>
+    <url-pattern>/servlet/ClatServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClatToolServlet</servlet-name>
+    <url-pattern>/servlet/ClatToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClatAssetServlet</servlet-name>
+    <url-pattern>/servlet/ClatAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClatSummaryServlet</servlet-name>
+    <url-pattern>/servlet/ClatSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClatProcessServlet</servlet-name>
+    <url-pattern>/servlet/ClatProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrtServlet</servlet-name>
+    <url-pattern>/servlet/CrtServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrtToolServlet</servlet-name>
+    <url-pattern>/servlet/CrtToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrtAssetServlet</servlet-name>
+    <url-pattern>/servlet/CrtAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrtProcessServlet</servlet-name>
+    <url-pattern>/servlet/CrtProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrtSummaryServlet</servlet-name>
+    <url-pattern>/servlet/CrtSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QprtServlet</servlet-name>
+    <url-pattern>/servlet/QprtServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QprtToolServlet</servlet-name>
+    <url-pattern>/servlet/QprtToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QprtAssetServlet</servlet-name>
+    <url-pattern>/servlet/QprtAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QprtSummaryServlet</servlet-name>
+    <url-pattern>/servlet/QprtSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QprtProcessServlet</servlet-name>
+    <url-pattern>/servlet/QprtProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MgenServlet</servlet-name>
+    <url-pattern>/servlet/MgenServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MgenAssetServlet</servlet-name>
+    <url-pattern>/servlet/MgenAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MgenToolServlet</servlet-name>
+    <url-pattern>/servlet/MgenToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MgenSummaryServlet</servlet-name>
+    <url-pattern>/servlet/MgenSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MgenProcessServlet</servlet-name>
+    <url-pattern>/servlet/MgenProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RpmServlet</servlet-name>
+    <url-pattern>/servlet/RpmServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RpmAssetServlet</servlet-name>
+    <url-pattern>/servlet/RpmAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RpmProcessServlet</servlet-name>
+    <url-pattern>/servlet/RpmProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RpmToolServlet</servlet-name>
+    <url-pattern>/servlet/RpmToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RpmSummaryServlet</servlet-name>
+    <url-pattern>/servlet/RpmSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditServlet</servlet-name>
+    <url-pattern>/servlet/IditServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditAssetServlet</servlet-name>
+    <url-pattern>/servlet/IditAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditToolServlet</servlet-name>
+    <url-pattern>/servlet/IditToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditSummaryServlet</servlet-name>
+    <url-pattern>/servlet/IditSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditProcessServlet</servlet-name>
+    <url-pattern>/servlet/IditProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScinServlet</servlet-name>
+    <url-pattern>/servlet/ScinServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScinToolServlet</servlet-name>
+    <url-pattern>/servlet/ScinToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScinAssetServlet</servlet-name>
+    <url-pattern>/servlet/ScinAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScinSummaryServlet</servlet-name>
+    <url-pattern>/servlet/ScinSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ScinProcessServlet</servlet-name>
+    <url-pattern>/servlet/ScinProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PatServlet</servlet-name>
+    <url-pattern>/servlet/PatServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PatToolServlet</servlet-name>
+    <url-pattern>/servlet/PatToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PatAssetServlet</servlet-name>
+    <url-pattern>/servlet/PatAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PatSummaryServlet</servlet-name>
+    <url-pattern>/servlet/PatSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PatProcessServlet</servlet-name>
+    <url-pattern>/servlet/PatProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LapServlet</servlet-name>
+    <url-pattern>/servlet/LapServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LapToolServlet</servlet-name>
+    <url-pattern>/servlet/LapToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LapAssetServlet</servlet-name>
+    <url-pattern>/servlet/LapAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LapSummaryServlet</servlet-name>
+    <url-pattern>/servlet/LapSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LapProcessServlet</servlet-name>
+    <url-pattern>/servlet/LapProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FcfServlet</servlet-name>
+    <url-pattern>/servlet/FcfServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FcfToolServlet</servlet-name>
+    <url-pattern>/servlet/FcfToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FcfSummaryServlet</servlet-name>
+    <url-pattern>/servlet/FcfSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FcfProcessServlet</servlet-name>
+    <url-pattern>/servlet/FcfProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrumServlet</servlet-name>
+    <url-pattern>/servlet/CrumServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrumToolServlet</servlet-name>
+    <url-pattern>/servlet/CrumToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrumSummaryServlet</servlet-name>
+    <url-pattern>/servlet/CrumSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CrumProcessServlet</servlet-name>
+    <url-pattern>/servlet/CrumProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TClatServlet</servlet-name>
+    <url-pattern>/servlet/TClatServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TClatToolServlet</servlet-name>
+    <url-pattern>/servlet/TClatToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TClatSummaryServlet</servlet-name>
+    <url-pattern>/servlet/TClatSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TClatProcessServlet</servlet-name>
+    <url-pattern>/servlet/TClatProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PlanningToolsServlet</servlet-name>
+    <url-pattern>/servlet/PlanningToolsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PlanningScenarioServlet</servlet-name>
+    <url-pattern>/servlet/PlanningScenarioServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ToolWizardServlet</servlet-name>
+    <url-pattern>/servlet/ToolWizardServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ToolSelectServlet</servlet-name>
+    <url-pattern>/servlet/ToolSelectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CashFlowInitServlet</servlet-name>
+    <url-pattern>/servlet/CashFlowInitServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ABTrustServlet</servlet-name>
+    <url-pattern>/servlet/ABTrustServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdCrtServlet</servlet-name>
+    <url-pattern>/servlet/StdCrtServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdGratServlet</servlet-name>
+    <url-pattern>/servlet/StdGratServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdCgaServlet</servlet-name>
+    <url-pattern>/servlet/StdCgaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdIditServlet</servlet-name>
+    <url-pattern>/servlet/StdIditServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdScinServlet</servlet-name>
+    <url-pattern>/servlet/StdScinServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdRpmServlet</servlet-name>
+    <url-pattern>/servlet/StdRpmServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdQprtServlet</servlet-name>
+    <url-pattern>/servlet/StdQprtServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RealEstateAssetServlet</servlet-name>
+    <url-pattern>/servlet/RealEstateAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CashAssetServlet</servlet-name>
+    <url-pattern>/servlet/CashAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BondAssetServlet</servlet-name>
+    <url-pattern>/servlet/BondAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BusinessAssetServlet</servlet-name>
+    <url-pattern>/servlet/BusinessAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IlliquidAssetServlet</servlet-name>
+    <url-pattern>/servlet/IlliquidAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DebtAssetServlet</servlet-name>
+    <url-pattern>/servlet/DebtAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LifeInsAssetServlet</servlet-name>
+    <url-pattern>/servlet/LifeInsAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NotesRecAssetServlet</servlet-name>
+    <url-pattern>/servlet/NotesRecAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NotesPayAssetServlet</servlet-name>
+    <url-pattern>/servlet/NotesPayAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PersonalAssetServlet</servlet-name>
+    <url-pattern>/servlet/PersonalAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RetirementAssetServlet</servlet-name>
+    <url-pattern>/servlet/RetirementAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SecuritiesAssetServlet</servlet-name>
+    <url-pattern>/servlet/SecuritiesAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditGratToolServlet</servlet-name>
+    <url-pattern>/servlet/IditGratToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditGratServlet</servlet-name>
+    <url-pattern>/servlet/IditGratServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditGratSummaryServlet</servlet-name>
+    <url-pattern>/servlet/IditGratSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditGratInsuranceServlet</servlet-name>
+    <url-pattern>/servlet/IditGratInsuranceServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditGratProcessServlet</servlet-name>
+    <url-pattern>/servlet/IditGratProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditGratAssetServlet</servlet-name>
+    <url-pattern>/servlet/IditGratAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClientAssetServlet</servlet-name>
+    <url-pattern>/servlet/ClientAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClientObjectivesServlet</servlet-name>
+    <url-pattern>/servlet/ClientObjectivesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClientObservationsServlet</servlet-name>
+    <url-pattern>/servlet/ClientObservationsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClientPhilosophyServlet</servlet-name>
+    <url-pattern>/servlet/ClientPhilosophyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClientRecommendationsServlet</servlet-name>
+    <url-pattern>/servlet/ClientRecommendationsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClientReportServlet</servlet-name>
+    <url-pattern>/servlet/ClientReportServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ClientDocServlet</servlet-name>
+    <url-pattern>/servlet/ClientDocServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PlannerDispatch</servlet-name>
+    <url-pattern>/servlet/PlannerDispatch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PlannerList</servlet-name>
+    <url-pattern>/servlet/PlannerList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PlannerForm</servlet-name>
+    <url-pattern>/servlet/PlannerForm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PlannerLogin</servlet-name>
+    <url-pattern>/PlannerLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LifeServlet</servlet-name>
+    <url-pattern>/servlet/LifeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LifeAssetServlet</servlet-name>
+    <url-pattern>/servlet/LifeAssetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LifeToolServlet</servlet-name>
+    <url-pattern>/servlet/LifeToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LifeSummaryServlet</servlet-name>
+    <url-pattern>/servlet/LifeSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LifeProcessServlet</servlet-name>
+    <url-pattern>/servlet/LifeProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VcfCashReceiptsServlet</servlet-name>
+    <url-pattern>/servlet/VcfCashReceiptsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VCFItemServlet</servlet-name>
+    <url-pattern>/servlet/VCFItemServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VcfCashDisbursementServlet</servlet-name>
+    <url-pattern>/servlet/VcfCashDisbursementServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VcfNetWorthServlet</servlet-name>
+    <url-pattern>/servlet/VcfNetWorthServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VcfEstateDistServlet</servlet-name>
+    <url-pattern>/servlet/VcfEstateDistServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VcfFamilyServlet</servlet-name>
+    <url-pattern>/servlet/VcfFamilyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VcfCharityServlet</servlet-name>
+    <url-pattern>/servlet/VcfCharityServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SetupIndexServlet</servlet-name>
+    <url-pattern>/servlet/SetupIndexServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HeirServlet</servlet-name>
+    <url-pattern>/servlet/HeirServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdvisorServlet</servlet-name>
+    <url-pattern>/servlet/AdvisorServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResidenceServlet</servlet-name>
+    <url-pattern>/servlet/ResidenceServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SpouseServlet</servlet-name>
+    <url-pattern>/servlet/SpouseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ChildrenGenServlet</servlet-name>
+    <url-pattern>/servlet/ChildrenGenServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ChildProcessServlet</servlet-name>
+    <url-pattern>/servlet/ChildProcessServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ChildSpouseServlet</servlet-name>
+    <url-pattern>/servlet/ChildSpouseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NewClientFormServlet</servlet-name>
+    <url-pattern>/servlet/NewClientFormServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminClientServlet</servlet-name>
+    <url-pattern>/servlet/AdminClientServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminSelectClientServlet</servlet-name>
+    <url-pattern>/servlet/AdminSelectClientServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminInitClient</servlet-name>
+    <url-pattern>/servlet/AdminInitClient</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminClientViewServlet</servlet-name>
+    <url-pattern>/servlet/AdminClientViewServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminClientFormServlet</servlet-name>
+    <url-pattern>/servlet/AdminClientFormServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LinkServlet</servlet-name>
+    <url-pattern>/servlet/LinkServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IditGiftServlet</servlet-name>
+    <url-pattern>/servlet/IditGiftServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IrsRatesServlet</servlet-name>
+    <url-pattern>/servlet/IrsRatesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdClatInitServlet</servlet-name>
+    <url-pattern>/servlet/StdClatInitServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdClatUserServlet</servlet-name>
+    <url-pattern>/servlet/StdClatUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdClatToolServlet</servlet-name>
+    <url-pattern>/servlet/StdClatToolServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdClatSummaryServlet</servlet-name>
+    <url-pattern>/servlet/StdClatSummaryServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FactorsServlet</servlet-name>
+    <url-pattern>/servlet/FactorsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>StdClatServlet</servlet-name>
+    <url-pattern>/servlet/StdClatServlet</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StdEstatePlanningServlet</servlet-name>
+        <url-pattern>/servlet/StdEstatePlanningServlet</url-pattern>
+    </servlet-mapping>
+    <security-constraint>
+        <display-name>AdminConstraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>Admin</web-resource-name>
+            <description>Routines for Admin</description>
+            <url-pattern>/admin/admintools.jsp</url-pattern>
+            <url-pattern>/admin/organizations/*</url-pattern>
+            <url-pattern>/admin/maintenance/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>admin</role-name>
+            </auth-constraint>
+        </security-constraint>
+    <security-constraint>
+        <display-name>User</display-name>
+        <web-resource-collection>
+            <web-resource-name>User</web-resource-name>
+            <description>Files accessed by user</description>
+            <url-pattern>/client/*</url-pattern>
+            <url-pattern>/documentation/*</url-pattern>
+            <url-pattern>/toolbox/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>user</role-name>
+            </auth-constraint>
+        </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name/>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/index.jsp</form-error-page>
+            </form-login-config>
+        </login-config>
+    <security-role>
+        <description/>
+        <role-name>admin</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>user</role-name>
+    </security-role>
+    </web-app>
