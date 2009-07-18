@@ -16,6 +16,7 @@ import com.estate.constants.Title;
 import com.estate.servlet.Utils;
 import com.teag.bean.CashBean;
 import com.teag.bean.PersonBean;
+import java.util.Enumeration;
 
 public class CashAssetServlet extends HttpServlet {
 
@@ -56,6 +57,11 @@ public class CashAssetServlet extends HttpServlet {
 		doPost(request,response);
 	}
 
+        public void printSecurity(HttpServletRequest request){
+            boolean isSecure = request.isSecure();
+            System.out.println("Secure is " + isSecure);
+        }
+
 	/**
 	 * The doPost method of the servlet. <br>
 	 *
@@ -71,7 +77,8 @@ public class CashAssetServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String path = "/WEB-INF/jsp/client/assets/cash";
-		
+
+                printSecurity(request);
 		String action = request.getParameter("action");
 		
 		if(action == null)

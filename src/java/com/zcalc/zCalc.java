@@ -4,6 +4,7 @@
  */
 package com.zcalc;
 
+import java.util.*;
 /**
  * @author Paul Stay
  *
@@ -11,12 +12,16 @@ package com.zcalc;
 public class zCalc {
 
 	static {
+
+        Properties props = System.getProperties();
+        System.out.println(props.get("java.library.path"));
 		System.loadLibrary("zCalcJNI");
 	}
 
 	public static void main(String[] args) {
 		zCalc zc = new zCalc();
         double d;
+
         zc.StartUp();
         System.out.print("zLE(67+2,0,0,0,0,0,11) = ");
         d = zc.zLE(67+2,0,0,0,0,0,11);

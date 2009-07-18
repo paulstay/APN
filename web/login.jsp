@@ -48,7 +48,7 @@
 					<td>
 						<input type="text" name='j_username' size="20"/>
 					</td>
-				<tr>
+				</tr>
 				<tr>
 					<td>
 						Password:

@@ -225,7 +225,7 @@ public class TitlePage extends Page{
             SimpleDateFormat df = new SimpleDateFormat("yyyy");
         	//String copyRight = "The Estate Advisory Group ? " + df.format(new Date());
             char cs = 0x00a9; // Unicode for the copyright symbol
-            String copyRight = "Advanced Practice Network " + cs + " " + df.format(new Date());
+            String copyRight = com.estate.constants.StringConstants.copyRight + cs + " " + df.format(new Date());
             float crWidth;
             float crLeft;
             

@@ -953,7 +953,7 @@
         <servlet-name>StdEstatePlanningServlet</servlet-name>
         <servlet-class>com.estate.servlet.std.planning.StdEstatePlanningServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
+    <servlet><servlet-name>LoginServlet</servlet-name><servlet-class>com.estate.login.LoginServlet</servlet-class></servlet><servlet-mapping>
     <servlet-name>PDFTest</servlet-name>
     <url-pattern>/servlet/PDFTest</url-pattern>
   </servlet-mapping>
@@ -1581,6 +1581,10 @@
         <servlet-name>StdEstatePlanningServlet</servlet-name>
         <url-pattern>/servlet/StdEstatePlanningServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/servlet/LoginServlet</url-pattern>
+    </servlet-mapping>
     <security-constraint>
         <display-name>AdminConstraint</display-name>
         <web-resource-collection>
@@ -1601,6 +1605,10 @@
             <description/>
             <role-name>admin</role-name>
             </auth-constraint>
+        <user-data-constraint>
+            <description>USE SSL</description>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
         </security-constraint>
     <security-constraint>
         <display-name>User</display-name>
@@ -1622,6 +1630,41 @@
             <description/>
             <role-name>user</role-name>
             </auth-constraint>
+        <user-data-constraint>
+            <description>User needs ssl</description>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+        </security-constraint>
+    <security-constraint>
+        <display-name>Constraint1</display-name>
+        <web-resource-collection>
+            <web-resource-name>Servlet Requests</web-resource-name>
+            <description/>
+            <url-pattern>/servlet/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Jsp Requests</web-resource-name>
+            <description>Make sure all jsp require ssl</description>
+            <url-pattern>*.jsp</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
         </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>

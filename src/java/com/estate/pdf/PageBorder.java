@@ -113,7 +113,7 @@ public class PageBorder {
 			// Display the copyright
 			SimpleDateFormat df = new SimpleDateFormat("yyyy");
 			char cs = 0x00a9; // Unicode for the copyright symbol
-			String copyRight = "The Advanced Practice Network " + cs + " "
+			String copyRight = com.estate.constants.StringConstants.copyRight + cs + " "
 					+ df.format(new Date());
 			float crWidth;
 			float crLeft;

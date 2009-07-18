@@ -15,97 +15,106 @@ import javax.servlet.http.HttpSession;
 import com.teag.bean.AdminBean;
 import com.teag.bean.LogonBean;
 
-
 public class PlannerLogin extends HttpServlet {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8912982138892696835L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 8912982138892696835L;
 
-	/**
-	 * Constructor of the object.
-	 */
-	public PlannerLogin() {
-		super();
-	}
+    /**
+     * Constructor of the object.
+     */
+    public PlannerLogin() {
+        super();
+    }
 
-	/**
-	 * Destruction of the servlet. <br>
-	 */
-	@Override
-	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
-	}
+    /**
+     * Destruction of the servlet. <br>
+     */
+    @Override
+    public void destroy() {
+        super.destroy(); // Just puts "destroy" string in log
+        // Put your code here
+    }
 
-	/**
-	 * The doGet method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
-	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request,response);
-	}
+    /**
+     * The doGet method of the servlet. <br>
+     *
+     * This method is called when a form has its tag value method equals to get.
+     *
+     * @param request the request send by the client to the server
+     * @param response the response send by the server to the client
+     * @throws ServletException if an error occurred
+     * @throws IOException if an error occurred
+     */
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request, response);
+    }
 
-	/**
-	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String path = "/index.jsp";	// Default to is to go back to the main index page..
-		
-		session.removeAttribute("validUser");
-		
-		String userName = request.getParameter("j_username");
-		String password = request.getParameter("j_password");
+    /**
+     * The doPost method of the servlet. <br>
+     *
+     * This method is called when a form has its tag value method equals to post.
+     *
+     * @param request the request send by the client to the server
+     * @param response the response send by the server to the client
+     * @throws ServletException if an error occurred
+     * @throws IOException if an error occurred
+     */
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String path = "/index.jsp";	// Default to is to go back to the main index page..
+
+        session.removeAttribute("validUser");
+        boolean authorized = false;
+
+        int count = 0;
+        if (session.getAttribute("loginCount") != null) {
+            Integer cnt = (Integer) session.getAttribute("loginCount");
+            count = cnt.intValue();
+        }
+
+        session.removeAttribute("loginCount");
+
+        String userName = request.getParameter("j_username");
+        String password = request.getParameter("j_password");
         boolean hash = false;
 
         // If the hash parameter is set, and not null, we already have the hash code.
-        if(request.getParameter("hash")!= null){
+        if (request.getParameter("hash") != null) {
             hash = true;
         }
 
-        if(userName == null || password == null){
-			request.setAttribute("errorMsg", "User name and or Password cannot be blank");
-			path = "/login.jsp";
-		}
-	
-		if(userName.length()> 0 && password.length() > 0){
-			AdminBean validUser = new AdminBean();
-			validUser.setPassword(password);
-			validUser.setUserName(userName);
-            if(hash) {
+        if (userName == null || password == null) {
+            request.setAttribute("errorMsg", "User name and or Password cannot be blank");
+            path = "/login.jsp";
+        }
+
+        if (userName.length() > 0 && password.length() > 0) {
+            AdminBean validUser = new AdminBean();
+            validUser.setPassword(password);
+            validUser.setUserName(userName);
+            if (hash) {
                 validUser.setHash(true);
             }
-			validUser.initialize();
-			
-			if(validUser.isAuthorized()&& validUser.getStatus().equalsIgnoreCase("A")){
-				session.setAttribute("validUser", validUser);
-				path = "/admin/index.jsp";
-				Date now = new Date();
-				SimpleDateFormat df = new SimpleDateFormat("M/d/yyyy hh:mm");
-				System.out.println("User Login: " + validUser.getUserName() + " @ "+ df.format(now));
-				LogonBean lb = new LogonBean();
-				lb.setPlannerId(validUser.getId());
-				lb.setIpAddress(request.getRemoteAddr());
-				lb.insert();
+            validUser.initialize();
+
+            if (validUser.isAuthorized() && validUser.getStatus().equalsIgnoreCase("A")) {
+                session.setAttribute("validUser", validUser);
+                path = "/admin/index.jsp";
+                Date now = new Date();
+                SimpleDateFormat df = new SimpleDateFormat("M/d/yyyy hh:mm");
+                System.out.println("User Login: " + validUser.getUserName() + " @ " + df.format(now));
+                LogonBean lb = new LogonBean();
+                lb.setPlannerId(validUser.getId());
+                lb.setIpAddress(request.getRemoteAddr());
+                lb.insert();
+                authorized = true;
 
                 // We need to add the group table, and the test for the password here
                 // If we get a true value we can access all of the data.
@@ -122,35 +131,57 @@ public class PlannerLogin extends HttpServlet {
                 ProgrammaticLogin pl = new ProgrammaticLogin();
                 boolean validLogin = pl.login(fishUser, fishPass, request, response);
 
+                if (validLogin) {
+                    System.out.println("Programmatic Valid User Login: " + validUser.getUserName() + " @ " + df.format(now));
+                } else {
+                    path = "/login.jsp";
+                }
             } else {
-				// Need to redirect to an login error page.
-				path = "/login.jsp";
-			}
-		}
-				
-		RequestDispatcher dispatch = request.getRequestDispatcher(path);
-		dispatch.forward(request, response);
-	}
+                // Need to redirect to an login error page.
+                path = "/login.jsp";
+            }
+        }
 
-	/**
-	 * Returns information about the servlet, such as 
-	 * author, version, and copyright. 
-	 *
-	 * @return String information about this servlet
-	 */
-	@Override
-	public String getServletInfo() {
-		return "This is my default servlet created by Eclipse";
-	}
 
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
-	@Override
-	public void init() throws ServletException {
-		// Put your code here
-	}
+     
+        if(!authorized){
+            count++;
+            Integer cnt = new Integer(count);
+            session.setAttribute("loginCount", cnt);
+            request.setAttribute("errorMsg", "User name and or Password are not correct!");
+        }
+        
+        // Add bad login attempts here, we have tried more than three times
+        if (count > 2) {
+            //Lock account
+            AdminBean admin = new AdminBean();
+            admin.voidUser(userName);
+            // redirect to bad login account
+            session.removeAttribute("loginCount");
+            path = "/badLogin.jsp";
+        }
+        RequestDispatcher dispatch = request.getRequestDispatcher(path);
+        dispatch.forward(request, response);
+    }
 
+    /**
+     * Returns information about the servlet, such as
+     * author, version, and copyright.
+     *
+     * @return String information about this servlet
+     */
+    @Override
+    public String getServletInfo() {
+        return "This is my default servlet created by Eclipse";
+    }
+
+    /**
+     * Initialization of the servlet. <br>
+     *
+     * @throws ServletException if an error occurs
+     */
+    @Override
+    public void init() throws ServletException {
+        // Put your code here
+    }
 }
