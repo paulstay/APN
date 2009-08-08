@@ -87,6 +87,7 @@ public class AdminBean extends SqlBean implements Serializable {
         dbObject.clearFields();
         dbAddField("PASSWORD", this.getPassword(), true);
         dbAddField("EPASS", this.getEPass(), true);
+        dbAddField("PRIVILAGES",this.getPrivilages());
         dbAddField("USER_NAME", this.getUserName(), true);
         dbAddField("MAX_CLIENTS", "25", true);
         dbAddField("FIRST_NAME", this.getFirstName(), true);
@@ -193,7 +194,7 @@ public class AdminBean extends SqlBean implements Serializable {
     public boolean canCreateClient() {
         boolean admin = false;
 
-        if (privilages.indexOf("E") >= 0) {
+        if (privilages != null && privilages.indexOf("E") >= 0) {
             admin = true;
         }
         return admin;
@@ -453,8 +454,15 @@ public class AdminBean extends SqlBean implements Serializable {
     }
 
     public void setPassword(String password) {
+        String passCheck = null;
         String pass = com.teag.util.StringUtil.removeChar(password, '\'');
+        try {
+                passCheck = com.estate.security.PasswordService.getInstance().encrypt(pass);
+                System.out.printf("Login %10s %s\n", userName, passCheck);
+            } catch (Exception e) {
+            }
         this.password = pass;
+        this.ePass = passCheck;
     }
 
     /**

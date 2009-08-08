@@ -134,6 +134,7 @@ public class PlannerLogin extends HttpServlet {
                 if (validLogin) {
                     System.out.println("Programmatic Valid User Login: " + validUser.getUserName() + " @ " + df.format(now));
                 } else {
+                    System.out.println("Failure to log into using programmatic login " + fishUser);
                     path = "/login.jsp";
                 }
             } else {
