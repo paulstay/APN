@@ -1635,14 +1635,6 @@
             <http-method>TRACE</http-method>
             <http-method>DELETE</http-method>
         </web-resource-collection>
-        <auth-constraint>
-            <description/>
-            <role-name>user</role-name>
-            </auth-constraint>
-        <user-data-constraint>
-            <description>User needs ssl</description>
-            <transport-guarantee>NONE</transport-guarantee>
-        </user-data-constraint>
         </security-constraint>
     <security-constraint>
         <display-name>Constraint1</display-name>
