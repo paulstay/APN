@@ -222,7 +222,7 @@ public class IlliquidBean extends AssetSqlBean {
 		if(null != this.getAld())
 		{
 			dALD = dateformat.parse(this.getAld(), new ParsePosition(0));
-			dbAddField(ALD, dbObject.dbDate(dALD));
+			dbAddDate(ALD, this.getAld());
 		}		
 		dbObject.insert();
 		uuid = dbObject.getUUID();
@@ -329,7 +329,7 @@ public class IlliquidBean extends AssetSqlBean {
 		if(null != this.getAld())
 		{
 			dALD = dateformat.parse(this.getAld(), new ParsePosition(0));
-			dbAddField(ALD, dbObject.dbDate(dALD));
+			dbAddDate(ALD, getAld());
 		}
 		
 		dbObject.setWhere(ID + "='" + id + "'");

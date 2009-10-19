@@ -145,6 +145,7 @@ public class CashFlowTable extends AnalysisSqlBean {
         cashRealEstate();
         cashBusiness();
         cashIlliquid();
+        cashIlliquidSale();
         cashNotes();
         cashTotalRec();
 
@@ -430,7 +431,33 @@ public class CashFlowTable extends AnalysisSqlBean {
         if (rFlag) {
             rows.add(r);
         }
+    }
 
+    public void cashIlliquidSale() {
+        boolean rFlag = false;
+        CFRow r = new CFRow();
+        r.setHeader("Sale of Illiquid Assets");
+        r.setIndentLevel(1);
+        r.setTextFill(0);
+
+        for (int i = 0; i < finalDeath; i++) {
+            double v = cashFlow.getIlliquidSale(i);
+            CFCol c = new CFCol();
+            if (v > 0) {
+                rFlag = true;
+            }
+            if (v < 0) {
+                c.setStrValue("" + formatNumber(v));
+                c.setFontColor(Color.red);
+            } else {
+                c.setStrValue("" + formatNumber(v));
+            }
+            c.setTextFill(3);
+            r.addCol(c);
+        }
+        if (rFlag) {
+            rows.add(r);
+        }
     }
 
     public void cashBusiness() {
@@ -1138,7 +1165,20 @@ public class CashFlowTable extends AnalysisSqlBean {
             r.setTextFill(0);
             r.setFontWeight(Font.PLAIN);
 
-            for (int i = 0; i < finalDeath; i++) {
+            Date ald = getDate(rec, "ALD");
+            int aYear = MAX_TABLE;
+
+            if (ald != null) {
+                Calendar c1 = Calendar.getInstance();
+                c1.setTime(ald);
+                aYear = c1.get(Calendar.YEAR);
+                aYear = aYear - this.cashFlow.currentYear;
+            }
+
+            if (aYear > finalDeath) {
+                aYear = finalDeath;
+            }
+            for (int i = 0; i < aYear; i++) {
                 value += value * growth;
                 nw.addValue(i, rnd(value));
                 CFCol col = new CFCol();

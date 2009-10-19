@@ -96,6 +96,12 @@
 						<teag:text name="growth" fmt="percent" value="${illiquid.growthRate}" />
 					</td>
 				</tr>
+                                <tr>
+					<td align="right">Anticipated Liquidation Date</td>
+					<td align='left'>
+						<teag:text name='ald' value='${illiquid.ald}' />
+					</td>
+				</tr>
 				<tr>
 					<td align="right">
 						Notes :
