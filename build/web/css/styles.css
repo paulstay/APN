@@ -1,0 +1,92 @@
+div#footer {position:relative; left:2%; right:2%;color:blue; text-align: center}
+#client {position:relative; top:5px; left:2%;}
+#client a:link{color:white;}
+#client a:hover{color:red;}
+#client a:visited{color:white;}
+#client a {display:block;}
+#navigation {background:#004E87;}
+
+#personal {position:relative; left:15%;}
+#personal a {display:block;}
+
+/* #client-index a:link{ font-weight:bold; color:#004E87;} */
+#client-index a:link{color:#004E87;}
+#client-index a:hover{color:#004E87;}
+#client-index a:visited{color:#004E87;}
+
+.error-red {font-weight:bold; color:red; font-size:1.2em; }
+.form-error {font-style: italic; color:red; font-size:0.9em; }
+
+/* shared background color classes */
+.bg-color1	{ background: #FFFFFF; }
+.bg-color2	{ background: #F7F7F7; }
+.bg-color3	{ color:white; background: #202092; }
+.bg-color4	{ color: white; background: #6063DA; }
+.bg-color5	{ background: #202092; } 
+.bg-color6	{ background: #dAE4FF; } 
+
+#main {border:1px blue solid;}
+#main td {border:1px red solid;}
+#main th {border:2px blue solid;}
+#main {position:relative; top:2%; bottom:2%; right:2%; left:2%; background:#EBF5FC;}
+
+.title-header {border:2px; color:red;}
+.header-bold {font-weight:bold; font-size:1.5em; color:black;}
+.header-bold-blue {font-weight:bold; font-size:1.5em; color:#004E87;}
+.header-red {font-style:italic; color:red;}
+.title-cap {font-style:normal;vertical-align:middle; font-size:150%; text-transform:uppercase;}
+.title-sub {font-family:monospace; font-style:normal;vertical-align:middle;font-size:95%; text-transform:uppercase;} 
+.text-bold {font-weight:bold;}
+.text-bold-red {font-weight:bold; color:red;}
+.text-bold-yellow {font-weight:bold; color:yellow;}
+.text-red {color:red;}
+.text-blue {color:blue;}
+
+.wpt-bold {font-weight:bold; font-size:.75em; color:blue;}
+.text-green {color:green;}
+.link-color1 {font-weight:bold; color:red;}
+.link-color2 {font-weight:bold; color:yellow;}
+.text-link {font-weight:bold; color:#004E87;}
+
+#tools table{position:relative; left:2%; right:2%; bottom:0%; color:red; text-align:center; background:#dAE4FF;}
+#tools a:link{color:#0000ff;}
+#tools a:hover{color:#0000ff;}
+#tools a:visited{color:#0000ff;}
+
+.date-class {font-weight:bold; color:green;}
+
+/* form settings */
+	.promptfalse	{ font-size:12pt; color:#990000; }
+	.prompttrue		{ font-size:12pt; color:#FFFFFF; }
+	.textinput		{ font-size:10pt; height:19px; border:1px solid #445577; }
+	.textareainput	{ font-size:12pt; border:1px solid #445577; }
+	.formboxes		{ font-size:10pt; }
+	.dropdownboxes	{ font-size:14pt; background: #CD6667; border:1px solid #445577; clear: both; }
+	.mininavboxes	{ font-size:12pt; font-weight:bold; background:#CD6667; border:1px solid #445577; width:120px; clear:both; }
+
+.teag-header {text-align:center; color:white; background:#8dcff4;}
+.networth-text-indent {text-indent:15px; }
+.scenario-text-indent {text-indent:15px; }
+
+/* Assets and Liability display colors */
+.assets-clr1 {background:white;}
+.assets-clr2 {background: #F0F0F0;}
+
+/* Cash Flow Analysis */
+.cash-main-table {text-align: left; margin-left: auto; margin-right: auto; width: 1800px; height: 29px;}
+.table2 { padding:4px; margin-top: auto; width : 100%; background-color: #101010;}
+
+A.button              { color: #000000; background-color: #999999; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-width: 1px; border-color: #000000; border-style: solid; }
+A.button:hover        { color: #FFFFFF; background-color: #000000; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; }
+A.button_normal       { color: #000000; background-color: #DDDDDD; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-width: 1px; border-color: #000000; border-style: solid; width: 100px; height: 18px; }
+A.button_normal:hover { color: #FFFFFF; background-color: #999999; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; }
+A.button_normal:active { color: #00ff00; background-color: #999999; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; }
+A.button_large        { color: #FFFFFF; background-color: #666699; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-width: 1px; border-color: #000000; border-style: solid; width: 150px; height: 18px; }
+A.button_large:hover  { color: #FFFFFF; background-color: #000000; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; }
+A.button_menu         { color: #FFFFFF; background-color: #666699; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-width: 1px; border-color: #000000; border-style: solid; width: 150px; height: 18px; }
+A.button_menu:hover   { color: #FFFFFF; background-color: #000000; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; }
+A.button_admin_menu         { color: #FFFFFF; background-color: #AA7777; text-align: center; vertical-align: middle; text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-width: 1px; border-color: #000000; border-style: solid; width: 150px; height: 18px; }
+A.button_admin_menu:hover   { color: #FFFFFF; background-color: #AA3333; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; }
+
+.l-color0  { background: #BFE2F9; color:black; }
+.l-color1  { background:#A4D480; color:black; }

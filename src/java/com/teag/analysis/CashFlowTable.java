@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import com.teag.bean.ABTrust;
+import com.teag.bean.BizContractBean;
 import com.teag.bean.ClientBean;
 import com.teag.bean.InsuranceBean;
 import com.teag.bean.NotePayableBean;
@@ -144,6 +145,7 @@ public class CashFlowTable extends AnalysisSqlBean {
         cashRetirement();
         cashRealEstate();
         cashBusiness();
+        cashBizContract();
         cashIlliquid();
         cashIlliquidSale();
         cashNotes();
@@ -415,6 +417,33 @@ public class CashFlowTable extends AnalysisSqlBean {
 
         for (int i = 0; i < finalDeath; i++) {
             double v = cashFlow.getIlliquid(i);
+            CFCol c = new CFCol();
+            if (v > 0) {
+                rFlag = true;
+            }
+            if (v < 0) {
+                c.setStrValue("" + formatNumber(v));
+                c.setFontColor(Color.red);
+            } else {
+                c.setStrValue("" + formatNumber(v));
+            }
+            c.setTextFill(3);
+            r.addCol(c);
+        }
+        if (rFlag) {
+            rows.add(r);
+        }
+    }
+
+    public void cashBizContract() {
+        boolean rFlag = false;
+        CFRow r = new CFRow();
+        r.setHeader("Salary from Contracts");
+        r.setIndentLevel(1);
+        r.setTextFill(0);
+
+        for (int i = 0; i < finalDeath; i++) {
+            double v = cashFlow.getContractSalary(i);
             CFCol c = new CFCol();
             if (v > 0) {
                 rFlag = true;
@@ -1040,6 +1069,7 @@ public class CashFlowTable extends AnalysisSqlBean {
         getMBonds();
         getSecurities();
         getIlliquid();
+        getBizContract();
         getRetirementPlans();
         getBusiness();
         getRealEstate();
@@ -1149,6 +1179,38 @@ public class CashFlowTable extends AnalysisSqlBean {
         if (rFlag) {
             rows.add(r);
         }
+    }
+
+    public void getBizContract() {
+
+        BizContractBean bean = new BizContractBean();
+        ArrayList<BizContractBean> bList = bean.getBeans(BizContractBean.OWNER_ID + "='" + cb.getPrimaryId() + "'");
+
+        for(BizContractBean b : bList) {
+            String description = (String) b.getDescription();
+            double value = b.getValue();
+            CFRow r = new CFRow();
+            r.setHeader(description);
+            r.setIndentLevel(1);
+            r.setTextFill(0);
+            r.setFontWeight(Font.PLAIN);
+            int sYear = b.getStartYear() - cashFlow.currentYear;
+            int eYear = b.getEndYear() - cashFlow.currentYear;
+
+            for(int i = 0; i < finalDeath; i++){
+               CFCol col = new CFCol();
+               col.setTextFill(3);
+               if(i >=  sYear && i <= eYear){
+                    nw.addValue(i, rnd(value));
+                    col.setStrValue(formatNumber(value));
+                } else {
+                   col.setStrValue("0");
+                }
+                r.addCol(col);
+            }
+            rows.add(r);
+        }
+
     }
 
     public void getIlliquid() {

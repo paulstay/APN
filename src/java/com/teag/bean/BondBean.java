@@ -337,5 +337,6 @@ public String getAmt() {
 		
 		dbObject.setWhere(ID + "='" + id + "'");
 		dbObject.update();
+                dbObject.stop();
 	}
 }

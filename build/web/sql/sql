@@ -1,0 +1,15 @@
+create table BIZ_CONTRACT(
+	ID bigint(19) not null auto_increment,
+	OWNER_ID bigint(19) not null,
+	DESCRIPTION varchar(32),
+	VALUE decimal(12,2),
+        SALARY decimal(12,2),
+        START_YEAR bigint(4),
+        END_YEAR bigint(4),
+	UUID varchar(36) not null,
+	CREATE_USER_NAME varchar(30) not null,
+	CREATE_DATE datetime not null,
+	UPDATE_USER_NAME varchar(30) not null,
+	UPDATE_DATE datetime not null,
+	primary key (ID)
+) TYPE = INNODB;

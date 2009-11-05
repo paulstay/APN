@@ -39,6 +39,8 @@ public abstract class SqlBean implements Serializable {
 	public static final int GIFTING = 11;
 	public static final int NOTES = 12;
 	public static final int ECORP = 13;
+        public static final int BIZCONT = 14;
+        
 	public static SimpleDateFormat dbDateFormat = new SimpleDateFormat("yyy-M-d");
 	public static DecimalFormat weightFormat = new DecimalFormat("0.000");
 	public static DecimalFormat integerFormat = new DecimalFormat("0");

@@ -89,6 +89,7 @@ public class CashFlow extends AnalysisSqlBean {
         cashInterest();
         municipal();
         securities();
+        bizContracts();
         illiquid();
         cashRetirement();
         notes();
@@ -205,6 +206,39 @@ public class CashFlow extends AnalysisSqlBean {
             }
         }
         cashMap.put("Interest on Cash", iTable);
+    }
+
+    /**
+     * Get the Biz contract and assoicated values
+     */
+    public void bizContracts() {
+        double[] rTable = new double[MAX_TABLE];
+        BizContractBean bean = new BizContractBean();
+        ArrayList<BizContractBean> bList = bean.getBeans(BizContractBean.OWNER_ID + "='" + cb.getPrimaryId() + "'");
+
+        for(BizContractBean b : bList){
+            double salary = b.getSalary();
+            int sYear = b.getStartYear();
+            int eYear = b.getEndYear();
+
+            int idx1 = sYear - currentYear;
+            int idx2 = eYear - currentYear;
+
+            if(idx1 <0)
+                idx1 = 0;
+
+            if(idx2 <0)
+                idx2 = 0;
+
+            for(int i=0; i < MAX_TABLE; i++){
+                if(i >= idx1 && i <= idx2){
+                    rTable[i] += salary;
+                } else {
+                    rTable[i] += 0;
+                }
+            }
+        }
+        cashMap.put("Contract Salary", rTable);
     }
 
     /**
@@ -632,6 +666,11 @@ public class CashFlow extends AnalysisSqlBean {
      * defines.
      */
     public void consulting() {
+    }
+
+    public double getContractSalary(int year) {
+        double[] cTable = (double[]) cashMap.get("Contract Salary");
+        return cTable[year];
     }
 
     public double getConsulting(int year) {
