@@ -30,6 +30,7 @@ import com.teag.estate.SIditTool;
 import com.teag.estate.TClat2;
 import com.teag.estate.TClatTool;
 import com.teag.webapp.EstatePlanningGlobals;
+import com.teag.estate.SplitDollarTool;
 
 public class ToolSelectServlet extends HttpServlet {
 
@@ -147,10 +148,11 @@ public class ToolSelectServlet extends HttpServlet {
 			path = "/servlet/LifeServlet";
 		} else if(tool.equalsIgnoreCase("MULTI")){
 			path = "/servlet/MgenServlet";
-		} else {
+		} else if(tool.equalsIgnoreCase("SPLIT")){
+                        path = "/servlet/SplitServlet";
+                } else{
 			path = "/servlet/ToolWizardServlet";
 		}
-		
 		return path;
 	}
 	
@@ -302,6 +304,14 @@ public class ToolSelectServlet extends HttpServlet {
 			session.setAttribute("life", life);
 			return "/servlet/LifeServlet";
 		}
+
+                if(tType == ToolTableTypes.SPLIT){
+                    SplitDollarTool split = new SplitDollarTool();
+                    split.setId(toolId);
+                    split.read();
+                    session.setAttribute("split", split);
+                    return "/servlet/SplitServlet";
+                }
 		
 		return path;
 	}

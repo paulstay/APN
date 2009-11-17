@@ -962,6 +962,26 @@
         <servlet-name>BizContractServlet</servlet-name>
         <servlet-class>com.estate.servlet.assets.BizContractServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SplitToolServlet</servlet-name>
+        <servlet-class>com.estate.servlet.tools.split.SplitToolServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SplitAssetServlet</servlet-name>
+        <servlet-class>com.estate.servlet.tools.split.SplitAssetServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SplitProcessServlet</servlet-name>
+        <servlet-class>com.estate.servlet.tools.split.SplitProcessServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SplitServlet</servlet-name>
+        <servlet-class>com.estate.servlet.tools.split.SplitServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SplitSummaryServlet</servlet-name>
+        <servlet-class>com.estate.servlet.tools.split.SplitSummaryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
     <servlet-name>PDFTest</servlet-name>
     <url-pattern>/servlet/PDFTest</url-pattern>
@@ -1601,6 +1621,26 @@
     <servlet-mapping>
         <servlet-name>BizContractServlet</servlet-name>
         <url-pattern>/servlet/BizContractServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SplitToolServlet</servlet-name>
+        <url-pattern>/servlet/SplitToolServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SplitAssetServlet</servlet-name>
+        <url-pattern>/servlet/SplitAssetServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SplitProcessServlet</servlet-name>
+        <url-pattern>/servlet/SplitProcessServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SplitServlet</servlet-name>
+        <url-pattern>/servlet/SplitServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SplitSummaryServlet</servlet-name>
+        <url-pattern>/servlet/SplitSummaryServlet</url-pattern>
     </servlet-mapping>
     <security-constraint>
         <display-name>AdminConstraint</display-name>

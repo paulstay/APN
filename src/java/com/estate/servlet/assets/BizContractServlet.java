@@ -148,8 +148,17 @@ public class BizContractServlet extends HttpServlet {
         int startYear = Utils.getIntegerParameter(request, "start_year", 2010);
         int endYear = Utils.getIntegerParameter(request, "end_year", 2010);
 
+
         bb.setStartYear(startYear);
         bb.setEndYear(endYear);
+
+        String cashFlow = Utils.getStringParameter(request, "cashFlow", "N");
+        if (cashFlow.equals("Y")) {
+            bb.setCashFlow(true);
+        } else {
+            bb.setCashFlow(false);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

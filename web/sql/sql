@@ -13,3 +13,15 @@ create table BIZ_CONTRACT(
 	UPDATE_DATE datetime not null,
 	primary key (ID)
 ) TYPE = INNODB;
+
+create table SPLIT_DOLLAR_TOOL(
+	ID bigint(19) not null auto_increment,
+	OWNER_ID bigint(19) not null,
+	DESCRIPTION varchar(32),
+	UUID varchar(36) not null,
+	CREATE_USER_NAME varchar(30) not null,
+	CREATE_DATE datetime not null,
+	UPDATE_USER_NAME varchar(30) not null,
+	UPDATE_DATE datetime not null,
+	primary key (ID)
+) TYPE = INNODB;

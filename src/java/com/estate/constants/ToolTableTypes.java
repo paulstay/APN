@@ -24,7 +24,8 @@ public enum ToolTableTypes {
 	ERP(26,"Enhanced Retirement Plan", "ERP_TOOL", "ID"),
 	CPLAN(26,"Enhanced Retirement Plan", "CP_TOOL", "ID" ),
 	SIDIT(27,"Intentioanly Defective Irrevocable Trust (no GRAT)", "SIDIT_TOOL", "ID"),
-	SGIFT(28,"Gift to Charity Tool", "SGIFT_TOOL","ID");
+	SGIFT(28,"Gift to Charity Tool", "SGIFT_TOOL","ID"),
+        SPLIT(29,"Split Dollar (Marc S.)", "SPLIT_DOLLAR_TOOL", "ID");
 	
 	public static ToolTableTypes getToolTableType( int id) {
 		for( ToolTableTypes t : ToolTableTypes.values()) {

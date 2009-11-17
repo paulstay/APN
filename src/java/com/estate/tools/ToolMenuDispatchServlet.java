@@ -72,6 +72,7 @@ public class ToolMenuDispatchServlet extends HttpServlet {
 		
 		dispatch.forward(request, response);
 		} catch(Exception e){
+                        System.err.println("Exception " + e.getMessage());
 			System.err.println("Error in Tool Dispatch " + basePath + "/" + targetFile);
 		}
 	}

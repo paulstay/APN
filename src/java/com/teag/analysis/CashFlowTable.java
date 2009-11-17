@@ -1186,7 +1186,7 @@ public class CashFlowTable extends AnalysisSqlBean {
         BizContractBean bean = new BizContractBean();
         ArrayList<BizContractBean> bList = bean.getBeans(BizContractBean.OWNER_ID + "='" + cb.getPrimaryId() + "'");
 
-        for(BizContractBean b : bList) {
+        for (BizContractBean b : bList) {
             String description = (String) b.getDescription();
             double value = b.getValue();
             CFRow r = new CFRow();
@@ -1197,16 +1197,27 @@ public class CashFlowTable extends AnalysisSqlBean {
             int sYear = b.getStartYear() - cashFlow.currentYear;
             int eYear = b.getEndYear() - cashFlow.currentYear;
 
-            for(int i = 0; i < finalDeath; i++){
-               CFCol col = new CFCol();
-               col.setTextFill(3);
-               if(i >=  sYear && i <= eYear){
-                    nw.addValue(i, rnd(value));
-                    col.setStrValue(formatNumber(value));
+            for (int i = 0; i < finalDeath; i++) {
+                CFCol col = new CFCol();
+                col.setTextFill(3);
+                // If we are liquidating the contract and adding it into the cashflow receipts, we don't need to show a networth here
+                if (b.isCashFlow()) {
+                    if (i >= sYear && i < eYear) {
+                        nw.addValue(i, rnd(value));
+                        col.setStrValue(formatNumber(value));
+                    } else {
+                        col.setStrValue("0");
+                    }
                 } else {
-                   col.setStrValue("0");
+                    if (i >= sYear && i <= eYear) {
+                        nw.addValue(i, rnd(value));
+                        col.setStrValue(formatNumber(value));
+                    } else {
+                        col.setStrValue("0");
+                    }
                 }
                 r.addCol(col);
+
             }
             rows.add(r);
         }
@@ -1944,10 +1955,11 @@ public class CashFlowTable extends AnalysisSqlBean {
             // exemptions for at least one individual.
             double exemptions = 0;
 
-            if(abEstate[i]>0)
+            if (abEstate[i] > 0) {
                 exemptions = exemptionYear[i];
-            
-            double v = nw.getTotal(i) + rnd(estateLife[i]) - rnd(abEstate[i])+ rnd(exemptions);
+            }
+
+            double v = nw.getTotal(i) + rnd(estateLife[i]) - rnd(abEstate[i]) + rnd(exemptions);
             taxableEstate[i] = v;
             if (v > 0) {
                 c.setStrValue(totalFormat(v));

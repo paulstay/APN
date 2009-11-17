@@ -22,6 +22,7 @@ public class BizContractBean extends AssetSqlBean {
     public final static String END_YEAR = "END_YEAR";
     public final static String SALARY = "SALARY";
     public final static String OWNER_ID = "OWNER_ID";
+    public final static String CASHFLOW = "CASH_FLOW";
 
     public final static String tableName = "BIZ_CONTRACT";
 
@@ -36,6 +37,7 @@ public class BizContractBean extends AssetSqlBean {
     private double salary;
     private long ownerId;
     private String notes;
+    private boolean cashFlow;
 
 
     public BizContractBean() {
@@ -86,6 +88,9 @@ public class BizContractBean extends AssetSqlBean {
         dbAddField(START_YEAR, getStartYear());
         dbAddField(END_YEAR, getEndYear());
         dbAddField(SALARY, getSalary());
+        dbAddField(CASHFLOW, cashFlow);
+
+
 
         dbObject.insert();
         uuid = dbObject.getUUID();
@@ -106,6 +111,7 @@ public class BizContractBean extends AssetSqlBean {
         dbAddField(START_YEAR, getStartYear());
         dbAddField(END_YEAR, getEndYear());
         dbAddField(SALARY, getSalary());
+        dbAddField(CASHFLOW, cashFlow);
         dbObject.setWhere(ID + "='" + getId() + "'");
         dbObject.update();
         dbObject.stop();
@@ -129,6 +135,11 @@ public class BizContractBean extends AssetSqlBean {
             setEndYear(((Number)(account.get(END_YEAR))).intValue());
             setSalary(((Number)(account.get(SALARY))).doubleValue());
             setOwnerId(((Number)(account.get(OWNER_ID))).longValue());
+            String cf = (String) account.get(CASHFLOW);
+            if(cf.equals("Y"))
+                cashFlow = true;
+            else
+                cashFlow = false;
         }
     }
 
@@ -222,6 +233,14 @@ public class BizContractBean extends AssetSqlBean {
         return ownerId;
     }
 
+    public boolean isCashFlow() {
+        return cashFlow;
+    }
+
+    public void setCashFlow(boolean cashFlow) {
+        this.cashFlow = cashFlow;
+    }
+
     public void setOwnerId(long ownerId) {
         this.ownerId = ownerId;
     }
@@ -233,4 +252,6 @@ public class BizContractBean extends AssetSqlBean {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+
 }

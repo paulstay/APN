@@ -77,6 +77,18 @@
 						<teag:text name="end_year" fmt="number" pattern="####" value="${biz.endYear }" />
 					</td>
 				</tr>
+                                <tr>
+                                    <td align="right">
+                                        Liquidate to Cash Flow at end of Contract
+                                    </td>
+                                    <td align="left">
+                                        <teag:select name='cashFlow'>
+						<teag:option label='Yes' value='1' selected='${biz.cashFlow }' />
+                                                <teag:option label='No' value='2' selected='${biz.cashFlow }' />
+					</teag:select>
+                                    </td>
+
+                                </tr>
 				<tr>
 					<td align='center' colspan='2'>
 						<c:choose>

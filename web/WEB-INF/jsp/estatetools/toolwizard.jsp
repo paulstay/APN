@@ -16,7 +16,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<title>Tool Wizartd</title>
+		<title>Tool Wizard</title>
 
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
@@ -175,6 +175,9 @@
 							<option value="TCLAT">
 								Testimentary Charitable Lead Annuity Trust
 							</option>
+                                                        <option value="SPLIT">
+                                                                Private Split Dollar (Marc S. only)
+                                                        </option>
 						</select>
 					</td>
 				</tr>

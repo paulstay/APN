@@ -237,6 +237,12 @@ public class CashFlow extends AnalysisSqlBean {
                     rTable[i] += 0;
                 }
             }
+
+            // if this is true, than at the end of the contract we
+            // add the value to the cash flow receipts!
+            if(b.isCashFlow()){
+                rTable[idx2] += b.getValue();
+            }
         }
         cashMap.put("Contract Salary", rTable);
     }
