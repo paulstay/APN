@@ -83,8 +83,8 @@
                                     </td>
                                     <td align="left">
                                         <teag:select name='cashFlow'>
-						<teag:option label='Yes' value='1' selected='${biz.cashFlow }' />
-                                                <teag:option label='No' value='2' selected='${biz.cashFlow }' />
+						<teag:option label='Yes' value='Y' selected='${biz.cashFlow }' />
+                                                <teag:option label='No' value='N' selected='${biz.cashFlow }' />
 					</teag:select>
                                     </td>
 

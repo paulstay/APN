@@ -88,9 +88,10 @@ public class BizContractBean extends AssetSqlBean {
         dbAddField(START_YEAR, getStartYear());
         dbAddField(END_YEAR, getEndYear());
         dbAddField(SALARY, getSalary());
-        dbAddField(CASHFLOW, cashFlow);
-
-
+        if(cashFlow)
+            dbAddField(CASHFLOW, "Y");
+        else
+            dbAddField(CASHFLOW, "N");
 
         dbObject.insert();
         uuid = dbObject.getUUID();
@@ -111,7 +112,12 @@ public class BizContractBean extends AssetSqlBean {
         dbAddField(START_YEAR, getStartYear());
         dbAddField(END_YEAR, getEndYear());
         dbAddField(SALARY, getSalary());
-        dbAddField(CASHFLOW, cashFlow);
+
+        if(cashFlow)
+            dbAddField(CASHFLOW, "Y");
+        else
+            dbAddField(CASHFLOW, "N");
+
         dbObject.setWhere(ID + "='" + getId() + "'");
         dbObject.update();
         dbObject.stop();
@@ -252,6 +258,4 @@ public class BizContractBean extends AssetSqlBean {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-
-
 }
