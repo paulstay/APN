@@ -26,6 +26,7 @@ public class CashFlowBean {
 	public final static String FINAL_DEATH = "FINAL_DEATH";
 	public final static String STATE_TAX_RATE = "STATE_TAX_RATE";
 	public final static String CHARITY = "CHARITY";
+        public final static String DEPRECIATION = "DEPRECIATION";
 
 	// General formating.
 	public static DecimalFormat number = new DecimalFormat("0.00");
@@ -49,6 +50,7 @@ public class CashFlowBean {
 	private int finalDeath;
 	private double stateTaxRate;
 	private boolean loaded;
+        private double depreciation;
 	HashMap<String, Object> rec;
 
 	public CashFlowBean() {
@@ -73,6 +75,7 @@ public class CashFlowBean {
 			setStateTaxRate(getDouble(rec, "STATE_TAX_RATE"));
 			setCharity(getDouble(rec,CHARITY));
 			setId(getLong(rec, "ID"));
+                        setDepreciation(getDouble(rec,DEPRECIATION));
 			loaded = true;
 		} else {
 			setDefault();
@@ -96,6 +99,7 @@ public class CashFlowBean {
 		dbAddField("FINAL_DEATH", getFinalDeath());
 		dbAddField("STATE_TAX_RATE", getStateTaxRate());
 		dbAddField(CHARITY, getCharity());
+                dbAddField(DEPRECIATION, getDepreciation());
 
 		dbObject.insert();
 		uuid = dbObject.getUUID();
@@ -118,6 +122,7 @@ public class CashFlowBean {
 		dbAddField("FINAL_DEATH", getFinalDeath());
 		dbAddField("STATE_TAX_RATE", getStateTaxRate());
 		dbAddField(CHARITY, getCharity());
+                dbAddField(DEPRECIATION, getDepreciation());
 		dbObject.setWhere("OWNER_ID='" + Long.toString(getOwnerId()) + "'");
 		dbObject.update();
 		dbObject.stop();
@@ -310,4 +315,15 @@ public class CashFlowBean {
 	public void setCharity(double charity) {
 		this.charity = charity;
 	}
+
+    public double getDepreciation() {
+        return depreciation;
+    }
+
+    public void setDepreciation(double depreciation) {
+        this.depreciation = depreciation;
+    }
+
+
+
 }

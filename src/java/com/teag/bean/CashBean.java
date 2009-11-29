@@ -239,6 +239,7 @@ public class CashBean extends AssetSqlBean {
 		this.id = Integer.parseInt(o.toString());
 		dbObject.stop();
 	}
+
 	/**
 	 * @param acct The acct to set.
 	 */

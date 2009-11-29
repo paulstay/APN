@@ -409,6 +409,11 @@ public class CashFlow extends AnalysisSqlBean {
                 }
             }
         }
+        
+        // We need to add the global depreciation here, and later move this out to its own method.
+        for(int i=0; i < MAX_TABLE; i++){
+            depreciation[i] += cfb.getDepreciation();
+        }
         cashMap.put("Real Estate Income", rTable);
     }
 

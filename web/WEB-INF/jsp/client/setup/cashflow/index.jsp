@@ -91,6 +91,12 @@
 						<teag:text fmt="percent" pattern="##.###%" name="charity" value="${cashFlow.charity}"/>
 					</td>
 				</tr>
+                                <tr>
+                                    <td align="right">Depreciation</td>
+                                    <td align="left">
+                                        <teag:text fmt="number" pattern="###,###,###.##" name="depreciation" value="${cashFlow.depreciation}"/>
+                                    </td>
+                                </tr>
 				<tr>
 					<td colspan='3' align='center'>
 						<input type="image" src="toolbtns/Update.png" alt="Update Tool"

@@ -1608,7 +1608,14 @@ public class Report extends Throwable {
 		pageNum += cfg.getPageCount();
 		newPage();
 	}
-	
+
+        public void genSplit() {
+            SplitReport split = new SplitReport(document, writer);
+            split.setUserInfo(getUserInfo());
+            split.draw();
+            pageNum += split.getPageCount();
+            newPage();
+        }
 	
 	public void genScin() {
 		SCINTool scin= (SCINTool) session.getAttribute("scin");

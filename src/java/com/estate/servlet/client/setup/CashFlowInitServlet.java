@@ -90,6 +90,8 @@ public class CashFlowInitServlet extends HttpServlet {
 			cashFlow.setStateTaxRate(stateTaxRate);
 			double charity = Utils.getPercentParameter(request, "charity", 0);
 			cashFlow.setCharity(charity);
+                        double depreciation = Utils.getDoubleParameter(request, "depreciation", 0);
+                        cashFlow.setDepreciation(depreciation);
 			cashFlow.update();
 		}
 		
@@ -124,5 +126,4 @@ public class CashFlowInitServlet extends HttpServlet {
 	public void init() throws ServletException {
 		// Put your code here
 	}
-
 }
