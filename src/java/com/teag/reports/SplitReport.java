@@ -122,12 +122,12 @@ public class SplitReport extends Page {
 		String cells[][] = {
 				{"SUMMARY","","","[colspan=3,align=center,bold=1][][]"},
 				{"","","","[][][]"},
-				{"Asset Value","",dollar.format(3600000),"[][][]"},
+				{"Asset Value","",dollar.format(3927000),"[][][]"},
 				{"Initial Gift","",dollar.format(400000),"[][][]"},
-				{"Note Value","",dollar.format(3600000),"[][][]"},
+				{"Note Value","",dollar.format(3927000),"[][][]"},
 				{"Note Interest Rate","", percent.format(.36),"[][][]"},
 				{"Life Insurance Death Benefit","",dollar.format(20000000),"[][][]"},
-				{"Life Insurance Total Premium Payments","",dollar.format(4000000),"[][][]"},
+				{"Life Insurance Total Premium Payments","",dollar.format(4327000),"[][][]"},
 		};
 		table.buildTableEx(cells);
 		table.drawTable();

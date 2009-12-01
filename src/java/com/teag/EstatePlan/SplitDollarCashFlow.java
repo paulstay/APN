@@ -20,9 +20,9 @@ import com.teag.estate.*;
  * the loan is paid back to the estate, and the family gets the rest of the life insurance
  *
  * Premiums
- *    Year 1  $1.4M
- *    Year 2  $1.4M
- *    Year 3  $800K
+ *    Year 1  $1.426M
+ *    Year 2  $1.426M
+ *    Year 3  $ .800M
  *
  * Gift
  *    Year 1  $400K
@@ -38,7 +38,7 @@ public class SplitDollarCashFlow extends EstatePlanSqlBean {
     SplitDollarTool splitDollarTool;
     double afrMidTerm = .034;    // Oct 09 AFR mid term rate
     double[] loanAmount = new double[60];
-    double[] premiumPayments = {1400000, 1400000, 800};
+    double[] premiumPayments = {1426000, 1426000, 1075000};
     double gift = 400000;
     double deathBenefit = 20000000;
 
@@ -73,9 +73,9 @@ public class SplitDollarCashFlow extends EstatePlanSqlBean {
     }
 
     public void genDisburse() {
-        disbursement[0] = 1400000;
-        disbursement[1] = 1400000;
-        disbursement[2] = 800000;
+        disbursement[0] = premiumPayments[0];
+        disbursement[1] = premiumPayments[1];
+        disbursement[2] = premiumPayments[2];
     }
 
     public void genNetWorth() {
