@@ -26,8 +26,8 @@ public class SplitReport extends Page {
     }
 
     public void draw() {
-        page1();
-        newPage();
+//        page1();
+//        newPage();
         page2();
         newPage();
         page3();
@@ -74,8 +74,8 @@ public class SplitReport extends Page {
     }
 
     public void page3() {
-        drawBorder(pageIcon, "MGT");
-        drawHeader(userInfo.getClientHeading(), "Multigenerational Trust");
+        drawBorder(pageIcon, "SPLIT");
+        drawHeader(client, heading);
         Rectangle rct = new Rectangle(prctLeft);
         rct.setLeft(rct.getLeft() - _1_4TH);
         rct.setBottom(rct.getBottom() - _1_4TH);
@@ -91,15 +91,25 @@ public class SplitReport extends Page {
         }
 
         String[] clientMultiGenDesc = new String[] {
-            "Hal and Linda sell municipal bonds to make a gift ($400,000) and loan (total over 3 years of $3,929,000) to the multigenerational trust.",
-            "Assets can be protected for family from divorced spouses, creditors, and estate taxes.",
-            "Earnings of the Mutigenerational Trust can benefit future posterity according to the financial philosophy described by Hal and Linda in the trust instrument.",
-            "Upon the deaths of children, grandchildren, etc. assets remaining in the trust can avoid estate taxes as long as the trust is allowed to continue. The length of time is based upon the laws of each state, called the “Rule against Perpetuities”. In Florida, this trust can last for 360 years."
+            "Hal and Linda sell municipal bonds to make a gift ($400,000) and loan (total over 3 years of $3,929,000) to the Split Dollar Loan Inheritance Trust (Trust).",
+            "The loan is used by the Trust to purchase two $10 million “survivorship” policies on Hal and Linda’s lives.",
+            "Upon second death, (of Hal and Linda), the trust life insurance proceeds are paid to the Trust free from both income and estate taxes.",
+            "Distributions from the remaining proceeds are made to the children and Grand children from the trust, as directed by instructions from Hal and Linda.",
+            "Trust assets are be protected from creditors, estate taxes and divorced spouses, etc.",
+            "Earnings in the Trust can benefit future posterity according to the financial philosophy described by Hal and Linda in the trust instrument.",
+            "Trust assets avoid estate taxes as long as the trust is allowed to continue. The length of time is based upon the laws of each state, called the “Rule against Perpetuities”. In Florida, this trust can last for 360 years."
+        };
+
+        String[] clientSideEffects = new String[] {
+            "Assets are irrecocably transferred to the family.",
+            "The value of the notes and all accrued interest is subject to estate tax."
         };
 
         rct = this.calcSectionRect(prctRight, "", clientMultiGenDesc, 1);
-        rct.setTop(prctRight.getTop() - ((prctRight.getHeight() - rct.getHeight()) / 2));
-        this.drawSection(rct, "", clientMultiGenDesc, 1, 12, 10.5f);
+        rct.setTop(prctRight.getTop());
+        rct = this.drawSection(rct, "The Process", clientMultiGenDesc, 1, 12, 10.5f);
+        rct.setTop(rct.getBottom() - _1_4TH );
+        drawSection(rct,"Side Effects/Drawbacks of Using this Technique", clientSideEffects, 1, 12, 10.5f);
     }
 
     public void page4() {
@@ -125,7 +135,7 @@ public class SplitReport extends Page {
 				{"Asset Value","",dollar.format(3927000),"[][][]"},
 				{"Initial Gift","",dollar.format(400000),"[][][]"},
 				{"Note Value","",dollar.format(3927000),"[][][]"},
-				{"Note Interest Rate","", percent.format(.36),"[][][]"},
+				{"Note Interest Rate","", percent.format(.036),"[][][]"},
 				{"Life Insurance Death Benefit","",dollar.format(20000000),"[][][]"},
 				{"Life Insurance Total Premium Payments","",dollar.format(4327000),"[][][]"},
 		};

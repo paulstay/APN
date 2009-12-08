@@ -1982,7 +1982,8 @@ public class EstatePlanTable extends EstatePlanSqlBean {
 
     public void estateVariables() {
         for (VariableCashFlow v : vcfItems) {
-            if (v.getCfType().equals("E")) {
+            if (v.getCfType().equals("F")) {
+                v.initialize();
                 estateMap.put(v.getDescription(), v.getVTable());
                 double[] vt = v.getVTable();
                 for (int i = 0; i < finalDeath; i++) {
@@ -2120,8 +2121,8 @@ public class EstatePlanTable extends EstatePlanSqlBean {
                      * For now we will use 50,000 so that it can be sold to the MGEN trust.
                      * -Paul April 2009
                      */
-                    tool.stdCalc(nw[i], 50000);
-                    // tool.stdCalc(taxableEstate[i], -abEstate[i]);
+                    //tool.stdCalc(nw[i], 50000);
+                    tool.stdCalc(taxableEstate[i], -abEstate[i]);
                     tclat[i] = -tool.getClatDeduction();
                     tclatRI[i] = tool.getRemainderInterest();
                     tclatCharity[i] = tool.getAnnuity() * tool.getTerm();

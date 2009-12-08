@@ -155,7 +155,10 @@ public class ChildProcessServlet extends HttpServlet {
 					for(int i=0; i < 13; i++) {
 						cm.put(Integer.toString(i),Integer.toString(i));
 					}
-					
+
+
+
+
 					request.setAttribute("sList", sList);	// spouse List
 					request.setAttribute("child", child);
 					request.setAttribute("btn", "Edit");
@@ -172,7 +175,7 @@ public class ChildProcessServlet extends HttpServlet {
 				grandChildren.setOwnerId(child.getId());
 				int numChildren = Utils.getIntegerParameter(request, "numChildren", 0);
 				grandChildren.setNumChildren(numChildren);
-				String notes = Utils.getStringParameter(request, "notes", "");
+				String notes = Utils.getStringParameter(request, "family", "");
 				grandChildren.setNotes(notes);
 				grandChildren.update();
 				path="/servlet/ChildrenGenServlet";

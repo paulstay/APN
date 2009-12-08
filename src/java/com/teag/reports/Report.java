@@ -1612,6 +1612,7 @@ public class Report extends Throwable {
         public void genSplit() {
             SplitReport split = new SplitReport(document, writer);
             split.setUserInfo(getUserInfo());
+            split.setPageNum(pageNum);
             split.draw();
             pageNum += split.getPageCount();
             newPage();
