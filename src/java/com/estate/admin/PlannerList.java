@@ -89,7 +89,8 @@ public class PlannerList extends HttpServlet {
                 first = pageNum * 10;
             }
 
-            planners = pb.getBeans(PlannerBean.ID + ">0 limit " + first + "," + count);
+            //planners = pb.getBeans(PlannerBean.ID + ">0 limit " + first + "," + count);
+            planners = pb.getBeans(PlannerBean.ID + ">0");
         } else {
             path = "/index/admin.jsp";
         }

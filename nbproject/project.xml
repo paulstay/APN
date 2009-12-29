@@ -71,10 +71,6 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library>
-                    <file>${file.reference.ZCalc.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library>
                     <file>${file.reference.appserv-ext.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>

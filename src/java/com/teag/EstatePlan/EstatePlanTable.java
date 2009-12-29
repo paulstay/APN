@@ -72,6 +72,7 @@ public class EstatePlanTable extends EstatePlanSqlBean {
     EstateCharitableDeduction charitableDeduction = new EstateCharitableDeduction();
     double[] cDeductions = new double[MAX_TABLE];
     double[] charitableGift = new double[MAX_TABLE];
+    double exemptionFix[] = new double[MAX_TABLE];
     // Save the depreciation for display, and for subtracting this value from
     // the tgaxable income!
     double[] depreciation = new double[MAX_TABLE];
@@ -129,6 +130,7 @@ public class EstatePlanTable extends EstatePlanSqlBean {
     double taxableEstate[] = new double[MAX_TABLE];
     double netToFamily[] = new double[MAX_TABLE];
     double netToCharity[] = new double[MAX_TABLE];
+    double finalToFamily[] = new double[MAX_TABLE];
     // Chart Data
     double chartFamily[] = new double[MAX_TABLE];
     double chartCharity[] = new double[MAX_TABLE];
@@ -504,7 +506,13 @@ public class EstatePlanTable extends EstatePlanSqlBean {
             for (int i = 0; i < finalDeath; i++) {
                 sRow[i] = cf[i];
             }
+
+            double tRow[] = new double[finalDeath + 1];
+            tRow[0] = splitValues.getDisbursement()[0];
+            tRow[1] = splitValues.getDisbursement()[1];
+            tRow[2] = splitValues.getDisbursement()[2];
             cashFlowMap.put("Split Dollar Bond Interest", sRow);
+            cashFlowMap.put("Split Dollar Bond Sell", tRow);
         }
 
     }
@@ -1059,6 +1067,8 @@ public class EstatePlanTable extends EstatePlanSqlBean {
         charitableDeduction.addDeduction(wptValues.getCharitableDeduction());
     }
 
+
+
     public void calcABEstate() {
         ABTrust ab = new ABTrust();
         ab.query(client.getId());
@@ -1080,6 +1090,13 @@ public class EstatePlanTable extends EstatePlanSqlBean {
             for (int i = 0; i < finalDeath; i++) {
                 double exempt = zc.zAPPEXCLUSION(year, 0, 0, 0);
                 abEstate[i] = -exempt * nTrusts;
+
+                if(nTrusts > 1){
+                    exemptionFix[i] = exempt;
+                } else {
+                    exemptionFix[i] = 0;
+                }
+
                 taxableEstate[i] += -exempt;
                 year++;
             }
@@ -1590,6 +1607,7 @@ public class EstatePlanTable extends EstatePlanSqlBean {
 
             for (int i = 0; i < finalDeath; i++) {
                 sRow[i] = fam[i];
+                netToFamily[i] += fam[i];
             }
             estateMap.put("MGT - Split Dollar", sRow);
         }
@@ -1820,6 +1838,7 @@ public class EstatePlanTable extends EstatePlanSqlBean {
         double zRow[] = new double[finalDeath + 1];
         for (int i = 0; i < finalDeath; i++) {
             zRow[i] = netToFamily[i] + taxableEstate[i] - abEstate[i];
+            finalToFamily[i] = netToFamily[i] + taxableEstate[i] - abEstate[i];
         }
 
         estateMap.put("NET TO FAMILY", zRow);
@@ -1994,12 +2013,16 @@ public class EstatePlanTable extends EstatePlanSqlBean {
     }
 
     public void eTaxableEstate() {
+
+        double xRow[] = new double[finalDeath + 1];
+
         for (int i = 0; i < finalDeath; i++) {
-            if (taxableEstate[i] < 0) {
-                taxableEstate[i] = 0;
+            xRow[i] = taxableEstate[i] - exemptionFix[i];
+            if (xRow[i] < 0) {
+                xRow[i] = 0;
             }
         }
-        estateMap.put("Taxable Estate", taxableEstate);
+        estateMap.put("Taxable Estate", xRow);
     }
 
     public void eTaxableLife() {
@@ -2065,6 +2088,8 @@ public class EstatePlanTable extends EstatePlanSqlBean {
         double r[] = retirementCashFlow.getTotalValue();
 
         for (int i = 0; i < finalDeath; i++) {
+            // zcalc already add in the first exemption, but we want to show the full in
+            // the report, so we add in the second if it exists to get the correct Federal Estate Tax.
             cet.setTaxableEstate(taxableEstate[i]);
             cet.setYear(year);
             cet.setRpBalance(rpmValues.getValue(i) + r[i]);
@@ -2265,7 +2290,7 @@ public class EstatePlanTable extends EstatePlanSqlBean {
                 chartSplit[i] = taxableEstate[i] - eTax[i];
             }
             chartCharity[i] = c4[i];
-            chartFamily[i] = fam[i];
+            chartFamily[i] = finalToFamily[i];
             chartEstate[i] = taxableEstate[i];
         }
 

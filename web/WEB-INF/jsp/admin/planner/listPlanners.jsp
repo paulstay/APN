@@ -44,6 +44,7 @@
 			</tr>
 			<c:set var='crl' value='0' />
 			<c:forEach var="planner" items='${planners}'>
+                            <c:if test="${planner.status == 'A'}">
 				<tr class='l-color${crl%2}'>
 					<td>
 						${planner.firstName }&nbsp;${planner.lastName }
@@ -79,6 +80,7 @@
 						</td>
 				</tr>
 				<c:set var='crl' value='${crl + 1}' />
+                            </c:if>
 			</c:forEach>
 			<teag:form name="nForm" action="servlet/PlannerDispatch"
 				method="post">
