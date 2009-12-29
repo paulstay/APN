@@ -32,6 +32,7 @@ public class SplitDollarCashFlow extends EstatePlanSqlBean {
     double cashFlow[] = new double[61];
     double disbursement[] = new double[61];
     double networth[] = new double[61];
+    double bondNetworth[] = new double[61];
     double toFamily[] = new double[61];
 
 
@@ -82,6 +83,11 @@ public class SplitDollarCashFlow extends EstatePlanSqlBean {
         for(int i=0; i < 60; i++){
             networth[i] = loanAmount[i];
         }
+
+        bondNetworth[0] = 4000000 - premiumPayments[0];
+        bondNetworth[1] = bondNetworth[0] - premiumPayments[1];
+        bondNetworth[2] = bondNetworth[1] - premiumPayments[2];
+        bondNetworth[3] = 0;
     }
 
     public void genToFamily() {
@@ -174,6 +180,15 @@ public class SplitDollarCashFlow extends EstatePlanSqlBean {
     public void setToFamily(double[] toFamily) {
         this.toFamily = toFamily;
     }
+
+    public double[] getBondNetworth() {
+        return bondNetworth;
+    }
+
+    public void setBondNetworth(double[] bondNetworth) {
+        this.bondNetworth = bondNetworth;
+    }
+
 
     
     

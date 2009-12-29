@@ -3036,6 +3036,14 @@ public class EstatePlanTable extends EstatePlanSqlBean {
 
     public void nSplit() {
         if (!splitList.isEmpty()) {
+
+            double bNet[] = splitValues.getBondNetworth();
+            double tRow[] = new double[finalDeath + 1];
+            for(int i=0; i < finalDeath; i++){
+                tRow[i] = bNet[i];
+            }
+            netWMap.put("Split Bonds", tRow);
+
             double net[] = splitValues.getNetworth();
             double sRow[] = new double[finalDeath + 1];
             for (int i = 0; i < finalDeath; i++) {
