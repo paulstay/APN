@@ -145,6 +145,7 @@ public class EstatePlanTable extends EstatePlanSqlBean {
     double excludePersonal[] = new double[MAX_TABLE];
     double taxDed[] = new double[MAX_TABLE];
     double eNetR[] = new double[MAX_TABLE];
+    double marcCharity[] = new double[MAX_TABLE];
     double[] tclat;
     double[] tclatRI;
     double[] tclatCharity;
@@ -508,9 +509,12 @@ public class EstatePlanTable extends EstatePlanSqlBean {
             }
 
             double tRow[] = new double[finalDeath + 1];
-            tRow[0] = splitValues.getDisbursement()[0];
+            tRow[0] = splitValues.getDisbursement()[0] + 400000; // Add in the gift as well.
             tRow[1] = splitValues.getDisbursement()[1];
             tRow[2] = splitValues.getDisbursement()[2];
+            taxDed[0] += tRow[0];
+            taxDed[1] += tRow[1];
+            taxDed[2] += tRow[2];
             cashFlowMap.put("Split Dollar Bond Interest", sRow);
             cashFlowMap.put("Split Dollar Bond Sell", tRow);
         }
@@ -1807,21 +1811,20 @@ public class EstatePlanTable extends EstatePlanSqlBean {
         double c1[] = (double[]) estateMap.get("Amount to Charity from CRT");
         double c2[] = (double[]) estateMap.get("Amount to Charity from CLAT");
         double c3[] = (double[]) estateMap.get("PV of AMT to Charity from Test. CLAT");
-        // double c4[] = new double[MAX_TABLE];
         double c5[] = (double[]) estateMap.get("Amount to Charity from TCLAT");
-
         for (int i = 0; i < finalDeath; i++) {
             if (useTClat) {
-                netToCharity[i] += c1[i] + c2[i] + c3[i] + c5[i];
+                netToCharity[i] += c1[i] + c2[i] + c3[i] + c5[i] + marcCharity[i];
             } else {
-                netToCharity[i] += c1[i] + c2[i] + c5[i];
+                netToCharity[i] += c1[i] + c2[i] + c5[i] + marcCharity[i];
             }
         }
 
         double amt = 0;
 
         for (int i = 0; i < finalDeath; i++) {
-            amt = charitableGift[i] + getVcfCharity(i) + cDeductions[i] + (amt * 1.06);
+            //amt = charitableGift[i] + getVcfCharity(i) + cDeductions[i] + (amt * 1.06);
+            amt = charitableGift[i] + getVcfCharity(i) + (amt * 1.06);
             netToCharity[i] += amt;
         }
 
@@ -1917,10 +1920,20 @@ public class EstatePlanTable extends EstatePlanSqlBean {
     public void estateCharityVariables() {
         for (VariableCashFlow v : vcfItems) {
             if (v.getCfType().equals("X")) {
-                estateMap.put(v.getDescription(), v.getVTable());
-                double[] vt = v.getVTable();
-                for (int i = 0; i < finalDeath; i++) {
-                    netToCharity[i] += vt[i];
+                // The following is for Marc Sheridan
+                if(v.getDescription().equals("DBX")){
+                    double xRow[] = (double[]) netWMap.get("Retirement Plans");
+                    for(int i = 0; i < xRow.length; i++){
+                        marcCharity[i] = xRow[i];
+                    }
+                    estateMap.put("Gift of Retirement Plan", marcCharity);
+
+                } else {
+                    estateMap.put(v.getDescription(), v.getVTable());
+                    double[] vt = v.getVTable();
+                    for (int i = 0; i < finalDeath; i++) {
+                        netToCharity[i] += vt[i];
+                    }
                 }
             }
         }
@@ -2065,11 +2078,23 @@ public class EstatePlanTable extends EstatePlanSqlBean {
 
     public void eTaxableVCF() {
         for (VariableCashFlow v : vcfItems) {
-            if (v.getCfType().equals("T")) {
-                estateMap.put(v.getDescription(), v.getVTable());
-                double[] vt = v.getVTable();
-                for (int i = 0; i < finalDeath; i++) {
-                    taxableEstate[i] += vt[i];
+            if (v.getCfType().equals("E")) {
+                // The following is for the defined benifit disbursement for Marc Sheridan
+                if(v.getDescription().equals("DBX")){
+                    double xRow[] = (double[]) netWMap.get("Retirement Plans");
+                    double vRow[] = new double[xRow.length];
+                    for(int i=0; i < xRow.length; i++){
+                        vRow[i] = xRow[i] * -1;
+                        taxableEstate[i] += vRow[i];
+                    }
+                    estateMap.put("Balance of Retirement", xRow);
+
+                } else {
+                    estateMap.put(v.getDescription(), v.getVTable());
+                    double[] vt = v.getVTable();
+                    for (int i = 0; i < finalDeath; i++) {
+                        taxableEstate[i] += vt[i];
+                    }
                 }
             }
         }

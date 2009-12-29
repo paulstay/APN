@@ -34,7 +34,7 @@
 	<td align='center'></td>
 </tr>
 <c:forEach var="s" items="${cList}" >
-<c:if test="${ s.cfFlag == 'T'}">
+<c:if test="${ s.cfFlag == 'E'}">
 <tr class="l-color${inc%2}">
 		<td align='right'>${s.description}</td>
 		<td align='right'><fmt:formatNumber value='${s.startYear}' pattern='####'/></td>

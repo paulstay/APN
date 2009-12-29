@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			name="iform">
 			<input type='hidden' name='action' value='Cancel' />
 			<input type='hidden' name='id' value='${vcf.id}' />
-			<input type='hidden' name='cfFlag' value='T' />
+			<input type='hidden' name='cfFlag' value='E' />
 			<table align='center'>
 				<tr>
 					<td align='right'>

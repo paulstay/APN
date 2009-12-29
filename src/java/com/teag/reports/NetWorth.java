@@ -264,6 +264,7 @@ public class NetWorth extends Page {
         rct = doRow(total, widths, rect, 3);
         rect.setTop(rct.getBottom());
 
+        dbObj.stop();
         return rect.getTop();
     }
 

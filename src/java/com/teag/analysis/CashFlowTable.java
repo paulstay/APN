@@ -1677,7 +1677,7 @@ public class CashFlowTable extends AnalysisSqlBean {
         getTaxableEstate();
         getTaxesAtDeath();
         getGiftsToChildren();
-        getEstateDistLineItems();
+        //getEstateDistLineItems();
         getAbToFamily();
         getFamilyVCF();
         getNetToFamily();
@@ -1804,7 +1804,7 @@ public class CashFlowTable extends AnalysisSqlBean {
     public void getEstateTaxVCF() {
         ArrayList<VariableCashFlow> al = cashFlow.estateTax;
         for (VariableCashFlow vcf : al) {
-            if (vcf.getCfType().equals("T")) {
+            if (vcf.getCfType().equals("E")) {
                 CFRow r = new CFRow();
                 r.setHeader(vcf.getDescription());
                 r.setIndentLevel(1);

@@ -85,8 +85,12 @@ public class SplitDollarCashFlow extends EstatePlanSqlBean {
     }
 
     public void genToFamily() {
+        double balance = 400000;
+        double growthRate = .05;
+        double incomeRate = .03;
         for(int i=0; i < 60; i++){
-            toFamily[i] = deathBenefit - loanAmount[i];
+            balance += (balance * growthRate) + (balance * incomeRate);
+            toFamily[i] = deathBenefit - loanAmount[i] + balance;
         }
     }
 
