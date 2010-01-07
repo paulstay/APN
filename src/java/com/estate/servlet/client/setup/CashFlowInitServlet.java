@@ -92,6 +92,8 @@ public class CashFlowInitServlet extends HttpServlet {
 			cashFlow.setCharity(charity);
                         double depreciation = Utils.getDoubleParameter(request, "depreciation", 0);
                         cashFlow.setDepreciation(depreciation);
+                        boolean useTax = Utils.getBooleanParameter(request, "useTax", true);
+                        cashFlow.setUseTax(useTax);
 			cashFlow.update();
 		}
 		

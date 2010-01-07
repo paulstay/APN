@@ -838,24 +838,27 @@ public class CashFlowTable extends AnalysisSqlBean {
     }
 
     public void taxes() {
-        CFRow r = new CFRow();
-        r.setHeader("Income Tax");
-        r.setIndentLevel(1);
-        r.setTextFill(0); // Left
 
-        for (int i = 0; i < finalDeath; i++) {
-            double v = cashFlow.getTax(i);
-            CFCol c = new CFCol();
-            if (v < 0) {
-                c.setStrValue("" + formatNumber(v));
-                c.setFontColor(Color.red);
-            } else {
-                c.setStrValue(formatNumber(v));
+        if (cashFlow.cfb.isUseTax()) {
+            CFRow r = new CFRow();
+            r.setHeader("Income Tax");
+            r.setIndentLevel(1);
+            r.setTextFill(0); // Left
+
+            for (int i = 0; i < finalDeath; i++) {
+                double v = cashFlow.getTax(i);
+                CFCol c = new CFCol();
+                if (v < 0) {
+                    c.setStrValue("" + formatNumber(v));
+                    c.setFontColor(Color.red);
+                } else {
+                    c.setStrValue(formatNumber(v));
+                }
+                c.setTextFill(3);
+                r.addCol(c);
             }
-            c.setTextFill(3);
-            r.addCol(c);
+            rows.add(r);
         }
-        rows.add(r);
     }
 
     // This is not included in the dispursements, but we show how much was

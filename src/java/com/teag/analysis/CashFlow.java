@@ -216,7 +216,7 @@ public class CashFlow extends AnalysisSqlBean {
         BizContractBean bean = new BizContractBean();
         ArrayList<BizContractBean> bList = bean.getBeans(BizContractBean.OWNER_ID + "='" + cb.getPrimaryId() + "'");
 
-        for(BizContractBean b : bList){
+        for (BizContractBean b : bList) {
             double salary = b.getSalary();
             int sYear = b.getStartYear();
             int eYear = b.getEndYear();
@@ -224,14 +224,16 @@ public class CashFlow extends AnalysisSqlBean {
             int idx1 = sYear - currentYear;
             int idx2 = eYear - currentYear;
 
-            if(idx1 <0)
+            if (idx1 < 0) {
                 idx1 = 0;
+            }
 
-            if(idx2 <0)
+            if (idx2 < 0) {
                 idx2 = 0;
+            }
 
-            for(int i=0; i < MAX_TABLE; i++){
-                if(i >= idx1 && i <= idx2){
+            for (int i = 0; i < MAX_TABLE; i++) {
+                if (i >= idx1 && i <= idx2) {
                     rTable[i] += salary;
                 } else {
                     rTable[i] += 0;
@@ -240,7 +242,7 @@ public class CashFlow extends AnalysisSqlBean {
 
             // if this is true, than at the end of the contract we
             // add the value to the cash flow receipts!
-            if(b.isCashFlow()){
+            if (b.isCashFlow()) {
                 rTable[idx2] += b.getValue();
             }
         }
@@ -409,9 +411,9 @@ public class CashFlow extends AnalysisSqlBean {
                 }
             }
         }
-        
+
         // We need to add the global depreciation here, and later move this out to its own method.
-        for(int i=0; i < MAX_TABLE; i++){
+        for (int i = 0; i < MAX_TABLE; i++) {
             depreciation[i] += cfb.getDepreciation();
         }
         cashMap.put("Real Estate Income", rTable);
@@ -742,8 +744,8 @@ public class CashFlow extends AnalysisSqlBean {
         return iTable[year];
     }
 
-    public double getIlliquidSale(int year){
-        double[] itable = (double[])cashMap.get("Sale of Illiquid Assets");
+    public double getIlliquidSale(int year) {
+        double[] itable = (double[]) cashMap.get("Sale of Illiquid Assets");
         return itable[year];
     }
 
@@ -927,32 +929,34 @@ public class CashFlow extends AnalysisSqlBean {
     public void tax2(int year) {
         double[] iTable = (double[]) dispMap.get("Income Tax");
 
-        CalcCashFlowTax ccf = new CalcCashFlowTax();
-        double lessTax = taxDeduction[year] + getVcfTax(year);
-        ccf.totalCashInflows = getCRTotal(year) - lessTax;
-        ccf.stateIncomeTaxRate = cfb.getStateTaxRate();
-        ccf.stateAGI = getCRTotal(year) - lessTax - socialTable[year] - bTable[year] - depreciation[year];
-        double maxAllowed = ccf.stateAGI * .30;		// Use 30% of Cash Flow Receipts
-        charitableCont[year] = getCRTotal(year) * cfb.getCharity();
-        charitableGifts[year] += charitableCont[0];
-        double vCharity = 0;
+        if (cfb.isUseTax()) {
+            CalcCashFlowTax ccf = new CalcCashFlowTax();
+            double lessTax = taxDeduction[year] + getVcfTax(year);
+            ccf.totalCashInflows = getCRTotal(year) - lessTax;
+            ccf.stateIncomeTaxRate = cfb.getStateTaxRate();
+            ccf.stateAGI = getCRTotal(year) - lessTax - socialTable[year] - bTable[year] - depreciation[year];
+            double maxAllowed = ccf.stateAGI * .30;		// Use 30% of Cash Flow Receipts
+            charitableCont[year] = getCRTotal(year) * cfb.getCharity();
+            charitableGifts[year] += charitableCont[0];
+            double vCharity = 0;
 
-        for (VariableCashFlow v : vcfItems) {
-            if (v.getCdType().equals("Y")) {
-                vCharity += v.getVTable()[year];
+            for (VariableCashFlow v : vcfItems) {
+                if (v.getCdType().equals("Y")) {
+                    vCharity += v.getVTable()[year];
+                }
             }
-        }
 
-        ccf.charitableDed = Math.min(maxAllowed, charitableCont[year] + vCharity);
-        charitableDeduction[year] = ccf.charitableDed;
-        ccf.socialSecurity = socialTable[year];
+            ccf.charitableDed = Math.min(maxAllowed, charitableCont[year] + vCharity);
+            charitableDeduction[year] = ccf.charitableDed;
+            ccf.socialSecurity = socialTable[year];
 
-        ccf.capTaxRate = .2;
-        ccf.calculate(currentYear);
-        if (ccf.totalTax > 0) {
-            iTable[year] = ccf.totalTax;
-        } else {
-            iTable[year] = 0;
+            ccf.capTaxRate = .2;
+            ccf.calculate(currentYear);
+            if (ccf.totalTax > 0) {
+                iTable[year] = ccf.totalTax;
+            } else {
+                iTable[year] = 0;
+            }
         }
     }
 
@@ -963,41 +967,42 @@ public class CashFlow extends AnalysisSqlBean {
             iTable[i] = 0.0;
         }
 
-        CalcCashFlowTax ccf = new CalcCashFlowTax();
-        double lessTax = taxDeduction[0] + getVcfTax(0);
-        ccf.totalCashInflows = getCRTotal(0) - lessTax;
-        ccf.stateIncomeTaxRate = cfb.getStateTaxRate();
-        // Need to get social security values and add them in here.
-        ccf.stateAGI = getCRTotal(0) - lessTax - socialTable[0] - bTable[0] - depreciation[0];
-        double maxAllowed = ccf.stateAGI * .30;
+        if (cfb.isUseTax()) {
+            CalcCashFlowTax ccf = new CalcCashFlowTax();
+            double lessTax = taxDeduction[0] + getVcfTax(0);
+            ccf.totalCashInflows = getCRTotal(0) - lessTax;
+            ccf.stateIncomeTaxRate = cfb.getStateTaxRate();
+            // Need to get social security values and add them in here.
+            ccf.stateAGI = getCRTotal(0) - lessTax - socialTable[0] - bTable[0] - depreciation[0];
+            double maxAllowed = ccf.stateAGI * .30;
 
-        //double[] charity = (double[]) dispMap.get("Charitable Contributions");
+            //double[] charity = (double[]) dispMap.get("Charitable Contributions");
 
-        //charity[0] += getCRTotal(0) * cfb.getCharity();
-        charitableCont[0] += getCRTotal(0) * cfb.getCharity();
-        //charitableGifts[0] += charity[0];
-        charitableGifts[0] += charitableCont[0];
+            //charity[0] += getCRTotal(0) * cfb.getCharity();
+            charitableCont[0] += getCRTotal(0) * cfb.getCharity();
+            //charitableGifts[0] += charity[0];
+            charitableGifts[0] += charitableCont[0];
 
-        double vCharity = 0;
-        for (VariableCashFlow v : vcfItems) {
-            if (v.getCdType().equals("Y")) {
-                //charity[0] += v.getVTable()[0];
-                vCharity += v.getVTable()[0];
+            double vCharity = 0;
+            for (VariableCashFlow v : vcfItems) {
+                if (v.getCdType().equals("Y")) {
+                    //charity[0] += v.getVTable()[0];
+                    vCharity += v.getVTable()[0];
+                }
+            }
+
+            //ccf.charitableDed = Math.min(maxAllowed, charity[0]);
+            ccf.charitableDed = Math.min(maxAllowed, charitableCont[0] + vCharity);
+            charitableDeduction[0] = ccf.charitableDed;
+            ccf.socialSecurity = socialTable[0];
+            ccf.capTaxRate = .2;
+            ccf.calculate(currentYear);
+            if (ccf.totalTax > 0) {
+                iTable[0] = ccf.totalTax;
+            } else {
+                iTable[0] = 0;
             }
         }
-
-        //ccf.charitableDed = Math.min(maxAllowed, charity[0]);
-        ccf.charitableDed = Math.min(maxAllowed, charitableCont[0] + vCharity);
-        charitableDeduction[0] = ccf.charitableDed;
-        ccf.socialSecurity = socialTable[0];
-        ccf.capTaxRate = .2;
-        ccf.calculate(currentYear);
-        if (ccf.totalTax > 0) {
-            iTable[0] = ccf.totalTax;
-        } else {
-            iTable[0] = 0;
-        }
-
         dispMap.put("Income Tax", iTable);
     }
 
@@ -1021,30 +1026,32 @@ public class CashFlow extends AnalysisSqlBean {
 
     public void fixTax(int year) {
         double[] iTable = (double[]) dispMap.get("Income Tax");
-        CalcCashFlowTax ccf = new CalcCashFlowTax();
-        double lessTax = taxDeduction[year] + getVcfTax(year);
-        ccf.totalCashInflows = getCRTotal(year) - lessTax;
-        ccf.stateIncomeTaxRate = cfb.getStateTaxRate();
+        if (cfb.isUseTax()) {
+            CalcCashFlowTax ccf = new CalcCashFlowTax();
+            double lessTax = taxDeduction[year] + getVcfTax(year);
+            ccf.totalCashInflows = getCRTotal(year) - lessTax;
+            ccf.stateIncomeTaxRate = cfb.getStateTaxRate();
 
-        // Need to get social security values and add them in here.
-        ccf.stateAGI = getCRTotal(year) - lessTax - socialTable[year] - bTable[year] - depreciation[year];
-        double maxAllowed = ccf.stateAGI * .30;
-        double charity = charitableGifts[year];
-        for (VariableCashFlow v : vcfItems) {
-            if (v.getCdType().equals("Y")) {
-                charity += v.getVTable()[year];
+            // Need to get social security values and add them in here.
+            ccf.stateAGI = getCRTotal(year) - lessTax - socialTable[year] - bTable[year] - depreciation[year];
+            double maxAllowed = ccf.stateAGI * .30;
+            double charity = charitableGifts[year];
+            for (VariableCashFlow v : vcfItems) {
+                if (v.getCdType().equals("Y")) {
+                    charity += v.getVTable()[year];
+                }
             }
-        }
 
-        ccf.charitableDed = Math.min(maxAllowed, charity);
-        charitableDeduction[year] = ccf.charitableDed;
-        ccf.capTaxRate = .2;
-        ccf.socialSecurity = socialTable[year];
-        ccf.calculate(currentYear + year);
-        if (ccf.totalTax > 0) {
-            iTable[year] = ccf.totalTax;
-        } else {
-            iTable[year] = 0;
+            ccf.charitableDed = Math.min(maxAllowed, charity);
+            charitableDeduction[year] = ccf.charitableDed;
+            ccf.capTaxRate = .2;
+            ccf.socialSecurity = socialTable[year];
+            ccf.calculate(currentYear + year);
+            if (ccf.totalTax > 0) {
+                iTable[year] = ccf.totalTax;
+            } else {
+                iTable[year] = 0;
+            }
         }
     }
 

@@ -27,6 +27,7 @@ public class CashFlowBean {
 	public final static String STATE_TAX_RATE = "STATE_TAX_RATE";
 	public final static String CHARITY = "CHARITY";
         public final static String DEPRECIATION = "DEPRECIATION";
+        public final static String USE_TAX = "USE_TAX";
 
 	// General formating.
 	public static DecimalFormat number = new DecimalFormat("0.00");
@@ -51,6 +52,7 @@ public class CashFlowBean {
 	private double stateTaxRate;
 	private boolean loaded;
         private double depreciation;
+        private boolean useTax = true; // default is true
 	HashMap<String, Object> rec;
 
 	public CashFlowBean() {
@@ -76,7 +78,13 @@ public class CashFlowBean {
 			setCharity(getDouble(rec,CHARITY));
 			setId(getLong(rec, "ID"));
                         setDepreciation(getDouble(rec,DEPRECIATION));
-			loaded = true;
+                        String tax = getString(rec,USE_TAX);
+                        if(tax.equals("Y")){
+                            setUseTax(true);
+                        } else {
+                            setUseTax(false);
+                        }
+                        loaded = true;
 		} else {
 			setDefault();
 			newFlag = true;
@@ -100,6 +108,7 @@ public class CashFlowBean {
 		dbAddField("STATE_TAX_RATE", getStateTaxRate());
 		dbAddField(CHARITY, getCharity());
                 dbAddField(DEPRECIATION, getDepreciation());
+                dbAddField(USE_TAX, isUseTax() ? "Y" : "N");
 
 		dbObject.insert();
 		uuid = dbObject.getUUID();
@@ -123,6 +132,7 @@ public class CashFlowBean {
 		dbAddField("STATE_TAX_RATE", getStateTaxRate());
 		dbAddField(CHARITY, getCharity());
                 dbAddField(DEPRECIATION, getDepreciation());
+                dbAddField(USE_TAX, isUseTax() ? "Y" : "N");
 		dbObject.setWhere("OWNER_ID='" + Long.toString(getOwnerId()) + "'");
 		dbObject.update();
 		dbObject.stop();
@@ -135,6 +145,7 @@ public class CashFlowBean {
 		finalDeath = 25;
 		stateTaxRate = .093; // California
 		charity = 0;
+                useTax = true;
 	}
 
 	public void delete() {
@@ -324,6 +335,13 @@ public class CashFlowBean {
         this.depreciation = depreciation;
     }
 
+    public boolean isUseTax() {
+        return useTax;
+    }
+
+    public void setUseTax(boolean useTax) {
+        this.useTax = useTax;
+    }
 
 
 }

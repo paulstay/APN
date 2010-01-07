@@ -879,7 +879,7 @@ public class EstatePlanTable extends EstatePlanSqlBean {
             }
         }
         // Fix depreciation here
-        for(int x=0; x < finalDeath; x++){
+        for (int x = 0; x < finalDeath; x++) {
             depreciation[x] += cashFlowVars.getDepreciation();
         }
 
@@ -1071,8 +1071,6 @@ public class EstatePlanTable extends EstatePlanSqlBean {
         charitableDeduction.addDeduction(wptValues.getCharitableDeduction());
     }
 
-
-
     public void calcABEstate() {
         ABTrust ab = new ABTrust();
         ab.query(client.getId());
@@ -1095,7 +1093,7 @@ public class EstatePlanTable extends EstatePlanSqlBean {
                 double exempt = zc.zAPPEXCLUSION(year, 0, 0, 0);
                 abEstate[i] = -exempt * nTrusts;
 
-                if(nTrusts > 1){
+                if (nTrusts > 1) {
                     exemptionFix[i] = exempt;
                 } else {
                     exemptionFix[i] = 0;
@@ -1140,14 +1138,15 @@ public class EstatePlanTable extends EstatePlanSqlBean {
 
     public void calcIncomeTax(int year) {
         double iRow[] = (double[]) dMap.get("Income Tax");
-        double totalCash = getCRTotal(year) - getVcfTax(year) - patValues.taxFree[year] - taxDed[year];
-        ;
-        // - rpmValues.getDistribution(year);
-        double t1 = calcTax(totalCash, year);
-        if (t1 > 0) {
-            iRow[year] = t1;
-        } else {
-            iRow[year] = 0;
+        if (this.cashFlowVars.isUseTax()) {
+            double totalCash = getCRTotal(year) - getVcfTax(year) - patValues.taxFree[year] - taxDed[year];
+            // - rpmValues.getDistribution(year);
+            double t1 = calcTax(totalCash, year);
+            if (t1 > 0) {
+                iRow[year] = t1;
+            } else {
+                iRow[year] = 0;
+            }
         }
     }
 
@@ -1921,9 +1920,9 @@ public class EstatePlanTable extends EstatePlanSqlBean {
         for (VariableCashFlow v : vcfItems) {
             if (v.getCfType().equals("X")) {
                 // The following is for Marc Sheridan
-                if(v.getDescription().equals("DBX")){
+                if (v.getDescription().equals("DBX")) {
                     double xRow[] = (double[]) netWMap.get("Retirement Plans");
-                    for(int i = 0; i < xRow.length; i++){
+                    for (int i = 0; i < xRow.length; i++) {
                         marcCharity[i] = xRow[i];
                     }
                     estateMap.put("Gift of Retirement Plan", marcCharity);
@@ -2080,10 +2079,10 @@ public class EstatePlanTable extends EstatePlanSqlBean {
         for (VariableCashFlow v : vcfItems) {
             if (v.getCfType().equals("E")) {
                 // The following is for the defined benifit disbursement for Marc Sheridan
-                if(v.getDescription().equals("DBX")){
+                if (v.getDescription().equals("DBX")) {
                     double xRow[] = (double[]) netWMap.get("Retirement Plans");
                     double vRow[] = new double[xRow.length];
-                    for(int i=0; i < xRow.length; i++){
+                    for (int i = 0; i < xRow.length; i++) {
                         vRow[i] = xRow[i] * -1;
                         taxableEstate[i] += vRow[i];
                     }
@@ -3039,7 +3038,7 @@ public class EstatePlanTable extends EstatePlanSqlBean {
 
             double bNet[] = splitValues.getBondNetworth();
             double tRow[] = new double[finalDeath + 1];
-            for(int i=0; i < finalDeath; i++){
+            for (int i = 0; i < finalDeath; i++) {
                 tRow[i] = bNet[i];
             }
             netWMap.put("Split Bonds", tRow);
