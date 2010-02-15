@@ -1938,16 +1938,17 @@ public class EstatePlanTable extends EstatePlanSqlBean {
         }
     }
 
+    // EST
     public void estateDistribution() {
         eNetworth();
         calcABEstate(); // need to do this before tclat
         eTaxableVCF();
+        eTClat(); // This will call eClat2();
         eGrat();
         eIdit();
         eSidit();
         eFLP();
         eTaxableLife();
-        eTClat(); // This will call eClat2();
         eABTrust();
         eTaxableEstate();
         eTaxes();
@@ -2114,7 +2115,9 @@ public class EstatePlanTable extends EstatePlanSqlBean {
         for (int i = 0; i < finalDeath; i++) {
             // zcalc already add in the first exemption, but we want to show the full in
             // the report, so we add in the second if it exists to get the correct Federal Estate Tax.
-            cet.setTaxableEstate(taxableEstate[i]);
+           // cet.setTaxableEstate(taxableEstate[i]-exemptionFix[i]);
+            //System.out.println("Estate Tax is [" + i + "] "+ Double.toString(taxableEstate[i]-1000000.00));
+            cet.setTaxableEstate(taxableEstate[i]-exemptionFix[i]);
             cet.setYear(year);
             cet.setRpBalance(rpmValues.getValue(i) + r[i]);
             cet.setClientTaxableGifts(getClientGiftTax(i));
@@ -2171,7 +2174,8 @@ public class EstatePlanTable extends EstatePlanSqlBean {
                      * -Paul April 2009
                      */
                     //tool.stdCalc(nw[i], 50000);
-                    tool.stdCalc(taxableEstate[i], -abEstate[i]);
+                    //tool.stdCalc(taxableEstate[i], -abEstate[i]);
+                    tool.stdCalc(taxableEstate[i], 50000);
                     tclat[i] = -tool.getClatDeduction();
                     tclatRI[i] = tool.getRemainderInterest();
                     tclatCharity[i] = tool.getAnnuity() * tool.getTerm();
@@ -2356,11 +2360,15 @@ public class EstatePlanTable extends EstatePlanSqlBean {
     }
 
     public double getClientGiftTax(int year) {
+        /*
+         * I think that the crummvalues will be part of the annual exclusion so we don't
+         * need to count them as gifts.
         clientGiftTax.finalDeath = finalDeath;
         clientGiftTax.ownerId = clientBean.getPrimaryId();
         clientGiftTax.crumGift = (crummValues.getAnnualGift()) / 2.0;
         clientGiftTax.crumTerm = crummValues.getTerm();
         clientGiftTax.init();
+         */
         double giftValue = 0;
 
         // WQe need to add the qprt gifts here
@@ -2431,11 +2439,14 @@ public class EstatePlanTable extends EstatePlanSqlBean {
 
     public double getSpouseGiftTax(int year) {
         double giftValue = 0;
+        /*
         spouseGiftTax.finalDeath = finalDeath;
         spouseGiftTax.ownerId = clientBean.getPrimaryId();
         spouseGiftTax.crumGift = (crummValues.getAnnualGift()) / 2.0;
         spouseGiftTax.crumTerm = crummValues.getTerm();
         spouseGiftTax.init();
+         */
+
         for (QprtTool qprt : qprtToolList) {
             giftValue = qprt.getSpousePriorGifts();
         }

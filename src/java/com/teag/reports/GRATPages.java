@@ -116,8 +116,8 @@ public class GRATPages extends Page {
 		page3();
 		if(useInsurance)
 		{
-			newPage();
-			page4();
+			//newPage();
+			//page4();
 		}
 	}
 

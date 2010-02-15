@@ -175,14 +175,14 @@ public class IDITPages extends Page {
 		page2();
 		newPage();
 		newIditPage();
-		newPage();
+		//newPage();
 		//page4();
 		//newPage();
 		//page5();
 		//newPage();
 		//page6();
 		//newPage();
-		page7();
+		//page7();
 	}
 	
 	/**

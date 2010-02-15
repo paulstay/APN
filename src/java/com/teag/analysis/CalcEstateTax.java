@@ -31,16 +31,23 @@ public class CalcEstateTax {
 		zCalc zc = new zCalc();
 		zc.StartUp();
         
-        double gifts = clientTaxableGifts + spouseTaxableGifts;
+            
+                double gifts = clientTaxableGifts + spouseTaxableGifts;
 
-		estateTax = zc.zET(taxableLessByPass,gifts,0.0,0.0,year,0,0.0,0.0,0L,0.0,0L);
+                if(taxableLessByPass <=0) {
+                    estateTax = 0.0;
+                    netIncTax = 1.0;
+                } else {
+                    estateTax = zc.zET(taxableLessByPass, gifts, 0.0, 0.0, year, 0, 0.0, 0.0, 0L, 0.0, 0L);
+                    netIncTax = zc.zFET(taxableLessByPass, spouseTaxableGifts, 0.0, 0.0, year, clientTaxableGifts, 0.0, 0.0, 0l, 0.0, 0L) / (taxableEstate);
+                }
 
 		/*
 		double maxrate = zc.zFETMAXRATE(year,0);
 		estateTax = maxrate * taxableLessByPass;
 		*/
 		
-		netIncTax = zc.zFET(taxableLessByPass,spouseTaxableGifts,0.0,0.0,year,clientTaxableGifts,0.0,0.0,0l,0.0,0L)/(taxableEstate);
+
 		estateTaxDeduction = rpBalance * netIncTax;
 		stateTax = rpBalance * stateTaxRate;
 		federalTaxable = rpBalance - estateTaxDeduction - stateTax;
